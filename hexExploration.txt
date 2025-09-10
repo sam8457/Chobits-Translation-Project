@@ -24,3 +24,6 @@
     32     7
     |      7 + 1 = 8
     32 - 29 = 3 bytes copied
+
+    # minimum seems to be 3 bytes copied, which makes sense as 2 would not save space
+    # this also is consistent with the assumption that the length indicator for 2-byte instructions always starts with 1

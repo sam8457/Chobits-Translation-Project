@@ -9,8 +9,8 @@ if os.path.exists('image.tm2'):
 input_file = open('eeMemory.bin.original', 'rb')
 output_file = open('image.tm2', 'ab')
 
-starting_address = int("4210B0",16)
-ending_address = int("46CD92",16)
+starting_address = int("46F960",16)
+ending_address = int("4825A0",16)
 
 excerpt_length = ending_address - starting_address
 input_file.seek(starting_address)
