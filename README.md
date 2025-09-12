@@ -1,4 +1,6 @@
 # Chobits-Translation-Project
 Storing scripts involved with extracting relevant data from the PS2 game Chobits: Chiidake no Hito.
 
-Import tim2CompTools to use compressor and decompressor functions.
+Import tim2CompTools to use compressor and decompressor functions. Functions recieve and return raw bytestrings.
+
+Put the name of the file to extract in the extractTims.py script and place them in the same folder, then run the script. The script will also output all other data in the file to .prefix and .suffix files to allow for later re-insertion.
