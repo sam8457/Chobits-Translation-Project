@@ -1,0 +1,54 @@
+01 2C 80   07   54 49 4D 32 04 00 01 00   94 00                     04   70 2C 01 00 40   84 0D         80 07      15   30 00 10 00 00 01 03 04 80 02 F0 00 7F BD 42 29 E6 FF 07 20 60 02   98 2A                                       88 33 00 FF FC 00 FC 22 FC 44 FC 66 FC 88 FC AA FC CC FC EE FD 10 FD 32 FD 54 FD 76 FD 98 FD BA FD DC FD FE FE 20 FE 42 FE 64 FE 86 FE A8 FE CA FE EC FF 0E FF 30 FF 52 FF 74 FF 96 FF B8 
+                54 49 4D 32 04 00 01 00   00 00 00 00 00 00 00 00        70 2C 01 00 40   00 00 00 00   2C 01 00        30 00 10 00 00 01 03 04 80 02 F0 00 7F BD 42 29 E6 FF 07 20 60 02   00 00 00 00 00 00 00 00 00 00 00 00 00 00   FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF 
+                                         |A                                              |B   
+
+07 = read 7 + 1 bytes
+04 = read 4 + 1 bytes
+
+94 00 --> copies 8 bytes
+    9    4    0    0
+    1001 0100 0000 0000 ---- convert to binary
+    100101 0000000000   ---- First 6 bits are amount, last 10 bits are distance back
+    37     0            ---- convert to decimal
+    |      0 + 1 = 1 bytes back from A
+    37 - 29 = 8 bytes copied
+
+84 0D --> copies 4 bytes
+    100001 0000001101
+    33     13
+    |      13 + 1 = 14 bytes back from B
+    33 - 29 = 4 bytes copied
+
+80 07 --> copies 3 bytes, 8 bytes back
+    100000 0000000111
+    32     7
+    |      7 + 1 = 8
+    32 - 29 = 3 bytes copied
+
+    # minimum seems to be 3 bytes copied, which makes sense as 2 would not save space
+    # this also is consistent with the assumption that the length indicator for 2-byte instructions always starts with 1
+
+Instructions can be 1 or 2 bytes long
+For both instruction lengths, the first bit is a flag to determine whether its a 1- or 2-byte instruction
+    For 1-byte instructions, the next 7 bits are the length of the literal chunk to copy
+        Its functionally identical to read it as an 8-bit location since the first bit will always be 0
+        in one-byte instructions.
+    For 2-byte instructions, the next 5 bits are the length of the literal chunk to copy, and
+    the remaining 10 bits are how far back from the end of the current uncompressed stream to copy from
+        2-byte instructions also start with a minimum of 3 bytes copied, since it wouldn't save space to do less than that
+        This is why I mistakely thought it needed to have 29 bits subtracted from it, because I was falsely reading it
+        as a 6-bit location, but since the 1st bit is always 1 it starts at 32, and 32 - 3 = 29.
+    
+Decompressor psuedocode
+    Create empty output data variable
+    Determine whether we are reading a 1-byte or 2-byte instruction
+        If first bit is on, its a 2-byte instruction, else its 1-bit
+    If 1-byte instruction:
+        Add the indicated number of bytes to the output data variable
+    If 2-byte instruction:
+        First bit is instruction size flag
+        Take the next 5 bits--this is the number of bytes to copy from the decompressed stream
+        Take the final 10 bits, this is how far back to look from the end of the decompressed stream for the desired bits    
+        Copy to the output data variable
+            Do it byte-by-byte, since you can actually copy previously copied bits for a single instruction
+   
