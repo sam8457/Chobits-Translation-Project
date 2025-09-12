@@ -15,21 +15,7 @@ def intToByte(integer):
     return byte
 
 
-def decompress(compressed_data, logging=False):
-    '''
-    Decompressor psuedocode
-        Create empty output data variable
-        Determine whether we are reading a 1-byte or 2-byte instruction
-            If first bit is on, its a 2-byte instruction, else its 1-bit
-        If 1-byte instruction:
-            Add the indicated number of bytes to the output data variable
-        If 2-byte instruction:
-            First bit is instruction size flag
-            Take the next 5 bits--this is the number of bytes to copy from the decompressed stream
-            Take the final 10 bits, this is how far back to look from the end of the decompressed stream for the desired bits    
-            Copy to the output data variable
-                Do it byte-by-byte, since you can actually copy previously copied bits for a single instruction
-    '''
+def decompress(compressed_data):
 
     decompressed_data = b""
 
@@ -49,23 +35,25 @@ def decompress(compressed_data, logging=False):
 
             min_bytes_copied = 1 # must be at least one literal byte to copy
             length = first_byte + min_bytes_copied
-            literal_chunk = compressed_data[compressed_pointer:compressed_pointer + length]
 
+            literal_chunk = compressed_data[compressed_pointer:compressed_pointer + length]
             decompressed_data += literal_chunk
             
             compressed_pointer += length
 
         else: # first_bit == "1": 
 
+            if len(compressed_data) - compressed_pointer < 2: # added to protect index out of range error
+                # Todo: add this last byte to the uncompressed TIM2 file
+                break
             second_8_bits = intToBits(compressed_data[compressed_pointer + 1])
-
             first_16_bits = first_8_bits + second_8_bits
 
             min_bytes_copied = 3 # wouldn't save space to substutute < 3 bytes
             length = bitsToInt(first_16_bits[1:6]) + min_bytes_copied
             location = bitsToInt(first_16_bits[6:]) + 1
 
-            for i in range(length):
+            for byte in range(length): # must be done per-byte to allow copying from the decompression stream
 
                 uncompressed_pointer = len(decompressed_data) - location
 
@@ -74,21 +62,21 @@ def decompress(compressed_data, logging=False):
 
             compressed_pointer += 2
 
-    return(decompressed_data)
+    return decompressed_data
 
 
 def compressBadly(uncompressed_data):
     """
-    While I know how the game decompresses files, I don't necessarily know how the
-    compressor searches for redundancies to do the compression in the first place.
-    The easy answer is just 'don't compress anything and use only 1-byte commands',
-    which is what this function does.
+    While I know how the decompression algorithm works, I don't know how the
+    compression algorithm works to find redundancies. The easy answer is to
+    only use 1-byte instructions to code for literals, which is all this
+    function does.
 
     I may work on finding a way to re-compress them later, but for now, this will 
     allow testing to progress.
     """
 
-    biggest_literal = 128 # must be <=128 since length instructions start at 1 and are 5 bits
+    biggest_literal = 128 # must be <=128 since length instructions start at 00000 = 1 and are 5 bits
 
     compressed_data = b''
 
@@ -101,7 +89,7 @@ def compressBadly(uncompressed_data):
 
         if remaining_data_size < biggest_literal:
 
-            min_bytes_copied = 1 # must be at least one literal byte to copy
+            min_bytes_copied = 1
             one_byte_instruction = intToByte(remaining_data_size - min_bytes_copied)
             compressed_data += one_byte_instruction
 
@@ -127,8 +115,8 @@ def compressBadly(uncompressed_data):
 
 
 if __name__ == "__main__":
-    #compressed_sample=bytes.fromhex("0754494D3204000100940004702C010040840D80071530001000000103048002F0007FBD4229E6FF07206002")
-    compressed_sample=bytes.fromhex("3254494D32040001000000000000000000702C010040000000002C010030001000000103048002F0007FBD4229E6FF07206002")
+    compressed_sample=bytes.fromhex("0754494D3204000100940004702C010040840D80071530001000000103048002F0007FBD4229E6FF07206002")
+    #badly_compressed_sample=bytes.fromhex("3254494D32040001000000000000000000702C010040000000002C010030001000000103048002F0007FBD4229E6FF07206002")
     correct_decompressed_sample=bytes.fromhex("54494D32040001000000000000000000702C010040000000002C010030001000000103048002F0007FBD4229E6FF07206002")
 
     decompressed_data = decompress(compressed_sample)
@@ -138,4 +126,3 @@ if __name__ == "__main__":
     print("Correct:",correct_decompressed_sample.hex())
     print(" Actual:",twice_decompressed_data.hex())
     print("Passes sanity check:", correct_decompressed_sample == twice_decompressed_data)
-    # todo: debug why this is false, also gets stuck in infinite loops sometimes

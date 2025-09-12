@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 
-# Todo: turn into repeatable function with parameters
+# Todo: extract from multiple files at once
+# Todo: write re-inserter for multiple files
 
 import os
 import tim2CompTools
 
-INPUT_FILE_NAME = "A00B"
+# Put the file to be extracted in the same directory this script
+# Can use grep ./ -r -e "TIM2" in linux terminal to search for files containing TIM2 images
+INPUT_FILE_NAME = "A020" # Example: A001
 
 input_file = open(INPUT_FILE_NAME, 'rb')
 input_file_data = input_file.read()
@@ -20,10 +23,10 @@ img_num = 0
 
 while input_file_data.find(start_code) != -1:
     
-    if img_num > 200: # may need to increase
+    if img_num > 350: # protects against inf loops, may need to increase
         break
 
-    start_of_tim = input_file_data.find(start_code) - 1 # first one-byte command is just before TIM2
+    start_of_tim = input_file_data.find(start_code) - 1 # first 1-byte command is 1 before TIM2
     prefix = input_file_data[:start_of_tim]
     input_file_data = input_file_data[start_of_tim:]
 
