@@ -20,21 +20,24 @@ stop_code = bytes.fromhex("0000000000000000")
 
 img_num = 0
 
+def writeAnnounce(data, file_num, extension):
+    file_name = INPUT_NAME + '_' + str(file_num) + extension
+    print("Writing to", file_name)
+    prefix_file = open(file_name, 'wb')
+    prefix_file.write(data)
+    prefix_file.close()
+    return
+
 while input_data.find(TIM2_code) != -1:
     
     if img_num > 350: # protects against inf loops, may need to increase
         break
 
     tim_start = input_data.find(TIM2_code) - 1
-
     prefix = input_data[:tim_start]
     input_data = input_data[tim_start:]
 
-    prefix_name = INPUT_NAME+'_'+str(img_num)+'.prefix'
-    print("Writing to", prefix_name)
-    prefix_file = open(prefix_name, 'wb')
-    prefix_file.write(prefix)
-    prefix_file.close()
+    writeAnnounce(prefix,img_num,'.prefix')
 
     tim_end = input_data.find(stop_code)
     tim_data = input_data[:tim_end]
@@ -42,17 +45,8 @@ while input_data.find(TIM2_code) != -1:
 
     decompd_tim = tim2CompTools.decompress(tim_data)
 
-    tim_name = INPUT_NAME+'_'+str(img_num)+'.tm2'
-    print("Writing to", tim_name)
-    tim_file = open(tim_name, 'wb')
-    tim_file.write(decompd_tim)
-    tim_file.close()
+    writeAnnounce(decompd_tim,img_num,'.tm2')
 
     img_num += 1
 
-suffix_name = tim_name = INPUT_NAME+'_'+str(img_num)+'.suffix'
-print("Writing to", suffix_name)
-suffix_file = open(suffix_name, 'wb')
-suffix_file.write(input_data)
-suffix_file.close()
-
+writeAnnounce(input_data,img_num,'.suffix')
