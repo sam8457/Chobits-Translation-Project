@@ -40,12 +40,12 @@ while input_data.find(TIM2_code) != -1:
     tim_data = input_data[:tim_end]
     input_data = input_data[tim_end:]
 
-    decompressed_tim = tim2CompTools.decompress(tim_data)
+    decompd_tim = tim2CompTools.decompress(tim_data)
 
     tim_name = INPUT_NAME+'_'+str(img_num)+'.tm2'
     print("Writing to", tim_name)
     tim_file = open(tim_name, 'wb')
-    tim_file.write(decompressed_tim)
+    tim_file.write(decompd_tim)
     tim_file.close()
 
     img_num += 1
