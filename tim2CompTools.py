@@ -15,114 +15,115 @@ def intToByte(integer):
     return byte
 
 
-def decompress(compressed_data):
+def decompress(compd_data):
 
-    decompressed_data = b""
+    decompd_data = b""
 
-    compressed_pointer = 0
-    data_size = len(compressed_data)
+    compd_pointer = 0
+    data_size = len(compd_data)
 
-    while compressed_pointer < data_size:
+    while compd_pointer < data_size:
 
-        first_byte = compressed_data[compressed_pointer]
+        first_byte = compd_data[compd_pointer]
         first_8_bits = intToBits(first_byte)
 
         first_bit = first_8_bits[0]
 
         if first_bit == "0":
 
-            compressed_pointer += 1
+            compd_pointer += 1
 
             min_bytes_copied = 1 # must be at least one literal byte to copy
             length = first_byte + min_bytes_copied
 
-            literal_chunk = compressed_data[compressed_pointer:compressed_pointer + length]
-            decompressed_data += literal_chunk
+            literal_chunk = compd_data[compd_pointer:compd_pointer + length]
+            decompd_data += literal_chunk
             
-            compressed_pointer += length
+            compd_pointer += length
 
         else: # first_bit == "1": 
 
-            if len(compressed_data) - compressed_pointer < 2: # added to protect index out of range error
-                # Todo: add this last byte to the uncompressed TIM2 file
+            if len(compd_data) - compd_pointer < 2: # added to protect index out of range error
+                # Todo: figure out what to dow with this last byte
+                # decompd_data += intToByte(compd_data) # causes crashes
                 break
-            second_8_bits = intToBits(compressed_data[compressed_pointer + 1])
+            second_8_bits = intToBits(compd_data[compd_pointer + 1])
             first_16_bits = first_8_bits + second_8_bits
 
             min_bytes_copied = 3 # wouldn't save space to substutute < 3 bytes
             length = bitsToInt(first_16_bits[1:6]) + min_bytes_copied
             location = bitsToInt(first_16_bits[6:]) + 1
 
-            for byte in range(length): # must be done per-byte to allow copying from the decompression stream
+            for byte in range(length): # must be done per-byte to allow copying from the decomp stream
 
-                uncompressed_pointer = len(decompressed_data) - location
+                uncompd_pointer = len(decompd_data) - location
 
-                copied_byte = decompressed_data[uncompressed_pointer:uncompressed_pointer+1]
-                decompressed_data += copied_byte
+                copied_byte = decompd_data[uncompd_pointer:uncompd_pointer+1]
+                decompd_data += copied_byte
 
-            compressed_pointer += 2
+            compd_pointer += 2
 
-    return decompressed_data
+    return decompd_data
 
 
-def compressBadly(uncompressed_data):
+def compressBadly(uncompd_data):
     """
     While I know how the decompression algorithm works, I don't know how the
     compression algorithm works to find redundancies. The easy answer is to
-    only use 1-byte instructions to code for literals, which is all this
+    only use 1-byte instructs to code for literals, which is all this
     function does.
 
     I may work on finding a way to re-compress them later, but for now, this will 
     allow testing to progress.
     """
 
-    biggest_literal = 128 # must be <=128 since length instructions start at 00000 = 1 and are 5 bits
+    max_literal = 128 # must be <=128 since length instructs start at 00000 = 1 and are 5 bits
 
-    compressed_data = b''
+    compd_data = b''
 
-    uncompressed_pointer = 0
-    data_size = len(uncompressed_data)
+    uncompd_pointer = 0
+    data_size = len(uncompd_data)
 
-    remaining_data_size = data_size - uncompressed_pointer
+    remaining_data_size = data_size - uncompd_pointer
 
     while (remaining_data_size > 0):
 
-        if remaining_data_size < biggest_literal:
+        if remaining_data_size < max_literal:
 
             min_bytes_copied = 1
-            one_byte_instruction = intToByte(remaining_data_size - min_bytes_copied)
-            compressed_data += one_byte_instruction
+            one_byte_instruct = intToByte(remaining_data_size - min_bytes_copied)
+            compd_data += one_byte_instruct
 
-            literal_chunk = uncompressed_data[uncompressed_pointer:]
-            compressed_data += literal_chunk
+            literal_chunk = uncompd_data[uncompd_pointer:]
+            compd_data += literal_chunk
 
-            uncompressed_pointer += remaining_data_size
+            uncompd_pointer += remaining_data_size
 
         else:
 
             min_bytes_copied = 1 # must be at least one literal byte to copy
-            one_byte_instruction = intToByte(biggest_literal - min_bytes_copied)
-            compressed_data += one_byte_instruction
+            one_byte_instruct = intToByte(max_literal - min_bytes_copied)
+            compd_data += one_byte_instruct
 
-            literal_chunk = uncompressed_data[uncompressed_pointer:uncompressed_pointer + biggest_literal]
-            compressed_data += literal_chunk
+            literal_chunk = uncompd_data[uncompd_pointer:uncompd_pointer + max_literal]
+            compd_data += literal_chunk
 
-            uncompressed_pointer += biggest_literal
+            uncompd_pointer += max_literal
 
-        remaining_data_size = data_size - uncompressed_pointer
+        remaining_data_size = data_size - uncompd_pointer
     
-    return compressed_data
+    return compd_data
 
 
 if __name__ == "__main__":
-    compressed_sample=bytes.fromhex("0754494D3204000100940004702C010040840D80071530001000000103048002F0007FBD4229E6FF07206002")
-    #badly_compressed_sample=bytes.fromhex("3254494D32040001000000000000000000702C010040000000002C010030001000000103048002F0007FBD4229E6FF07206002")
-    correct_decompressed_sample=bytes.fromhex("54494D32040001000000000000000000702C010040000000002C010030001000000103048002F0007FBD4229E6FF07206002")
+    compd_sample=bytes.fromhex("0754494D3204000100940004702C010040840D80071530001000000103048002F0007FBD4229E6FF07206002")
+    #badly_compd_sample=bytes.fromhex("3254494D32040001000000000000000000702C010040000000002C010030001000000103048002F0007FBD4229E6FF07206002")
+    correct_decompd_sample=bytes.fromhex("54494D32040001000000000000000000702C010040000000002C010030001000000103048002F0007FBD4229E6FF07206002")
 
-    decompressed_data = decompress(compressed_sample)
-    recompressed_data = compressBadly(decompressed_data)
-    twice_decompressed_data = decompress(recompressed_data)
+    decompd_data = decompress(compd_sample)
+    recompd_data = compressBadly(decompd_data)
+    twice_decompd_data = decompress(recompd_data)
 
-    print("Correct:",correct_decompressed_sample.hex())
-    print(" Actual:",twice_decompressed_data.hex())
-    print("Passes sanity check:", correct_decompressed_sample == twice_decompressed_data)
+    print("Correct:",correct_decompd_sample.hex())
+    print(" Actual:",twice_decompd_data.hex())
+    print("Passes sanity check:", correct_decompd_sample == twice_decompd_data)

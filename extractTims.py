@@ -8,50 +8,51 @@ import tim2CompTools
 
 # Put the file to be extracted in the same directory this script
 # Can use grep ./ -r -e "TIM2" in linux terminal to search for files containing TIM2 images
-INPUT_FILE_NAME = "A020" # Example: A001
+INPUT_NAME = "A020" # Example: A001
 
-input_file = open(INPUT_FILE_NAME, 'rb')
-input_file_data = input_file.read()
+input_file = open(INPUT_NAME, 'rb')
+input_data = input_file.read()
 input_file.close()
 
-TIM2_in_hex = '54494D32'
-start_code = bytes.fromhex(TIM2_in_hex)
+TIM2_code = bytes.fromhex('54494D32')
 stop_code = bytes.fromhex("0000000000000000")
-start_of_tim = input_file_data.find(start_code) - 4
+#stop_code = bytes.fromhex('5c4007') # Needed for file A005
 
 img_num = 0
 
-while input_file_data.find(start_code) != -1:
+while input_data.find(TIM2_code) != -1:
     
     if img_num > 350: # protects against inf loops, may need to increase
         break
 
-    start_of_tim = input_file_data.find(start_code) - 1 # first 1-byte command is 1 before TIM2
-    prefix = input_file_data[:start_of_tim]
-    input_file_data = input_file_data[start_of_tim:]
+    tim_start = input_data.find(TIM2_code) - 1
 
-    stop_of_tim = input_file_data.find(stop_code)
-    tim_data = input_file_data[:stop_of_tim]
-    input_file_data = input_file_data[stop_of_tim:]
+    prefix = input_data[:tim_start]
+    input_data = input_data[tim_start:]
+
+    prefix_name = INPUT_NAME+'_'+str(img_num)+'.prefix'
+    print("Writing to", prefix_name)
+    prefix_file = open(prefix_name, 'wb')
+    prefix_file.write(prefix)
+    prefix_file.close()
+
+    tim_end = input_data.find(stop_code)
+    tim_data = input_data[:tim_end]
+    input_data = input_data[tim_end:]
 
     decompressed_tim = tim2CompTools.decompress(tim_data)
 
-    output_file_name = INPUT_FILE_NAME+'_'+str(img_num)+'.tm2'
-    output_prefix_file_name = INPUT_FILE_NAME+'_'+str(img_num)+'.prefix'
+    tim_name = INPUT_NAME+'_'+str(img_num)+'.tm2'
+    print("Writing to", tim_name)
+    tim_file = open(tim_name, 'wb')
+    tim_file.write(decompressed_tim)
+    tim_file.close()
+
     img_num += 1
 
-    print("Writing to", output_file_name)
-    output_file = open(output_file_name, 'wb')
-    output_prefix_file = open(output_prefix_file_name, 'wb')
-
-    output_file.write(decompressed_tim)
-    output_prefix_file.write(prefix)
-
-    output_file.close()
-    output_prefix_file.close()
-
-suffix_file_name = output_file_name = INPUT_FILE_NAME+'_'+str(img_num)+'.suffix'
-suffix_file = open(suffix_file_name, 'wb')
-suffix_file.write(input_file_data)
+suffix_name = tim_name = INPUT_NAME+'_'+str(img_num)+'.suffix'
+print("Writing to", suffix_name)
+suffix_file = open(suffix_name, 'wb')
+suffix_file.write(input_data)
 suffix_file.close()
 
