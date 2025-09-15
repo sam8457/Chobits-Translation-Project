@@ -8,7 +8,7 @@ import tim2CompTools
 
 # Put the file to be extracted in the same directory this script
 # Can use grep ./ -r -e "TIM2" in linux terminal to search for files containing TIM2 images
-INPUT_NAME = "A020" # Example: A001
+INPUT_NAME = "A003" # Example: A001
 
 input_file = open(INPUT_NAME, 'rb')
 input_data = input_file.read()
@@ -23,9 +23,9 @@ img_num = 0
 def writeAnnounce(data, file_num, extension):
     file_name = INPUT_NAME + '_' + str(file_num) + extension
     print("Writing to", file_name)
-    prefix_file = open(file_name, 'wb')
-    prefix_file.write(data)
-    prefix_file.close()
+    file = open(file_name, 'wb')
+    file.write(data)
+    file.close()
     return
 
 while input_data.find(TIM2_code) != -1:

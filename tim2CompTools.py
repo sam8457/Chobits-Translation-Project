@@ -19,49 +19,51 @@ def decompress(compd_data):
 
     decompd_data = b""
 
-    compd_pointer = 0
+    compd_ptr = 0
     data_size = len(compd_data)
 
-    while compd_pointer < data_size:
+    while compd_ptr < data_size:
 
-        first_byte = compd_data[compd_pointer]
+        first_byte = compd_data[compd_ptr]
         first_8_bits = intToBits(first_byte)
 
         first_bit = first_8_bits[0]
 
         if first_bit == "0":
 
-            compd_pointer += 1
+            compd_ptr += 1
 
             min_bytes_copied = 1 # must be at least one literal byte to copy
             length = first_byte + min_bytes_copied
 
-            literal_chunk = compd_data[compd_pointer:compd_pointer + length]
+            literal_chunk = compd_data[compd_ptr:compd_ptr + length]
             decompd_data += literal_chunk
             
-            compd_pointer += length
+            compd_ptr += length
 
         else: # first_bit == "1": 
 
-            if len(compd_data) - compd_pointer < 2: # added to protect index out of range error
-                # Todo: figure out what to dow with this last byte
+            if len(compd_data) - compd_ptr < 2: # added to protect index out of range error
+                # Todo: figure out what to do with this last byte
                 # decompd_data += intToByte(compd_data) # causes crashes
+                ## May be because the first of the '00 00 00 00...' bits is actually the copy location?
+                    # Consider setting second_8_bits to 00 in this event, otherwise do the code below
                 break
-            second_8_bits = intToBits(compd_data[compd_pointer + 1])
+            second_8_bits = intToBits(compd_data[compd_ptr + 1])
             first_16_bits = first_8_bits + second_8_bits
 
             min_bytes_copied = 3 # wouldn't save space to substutute < 3 bytes
             length = bitsToInt(first_16_bits[1:6]) + min_bytes_copied
             location = bitsToInt(first_16_bits[6:]) + 1
 
-            for byte in range(length): # must be done per-byte to allow copying from the decomp stream
+            for b in range(length): # must be done per-byte to allow copying from the decomp stream
 
-                uncompd_pointer = len(decompd_data) - location
+                uncompd_ptr = len(decompd_data) - location
 
-                copied_byte = decompd_data[uncompd_pointer:uncompd_pointer+1]
+                copied_byte = decompd_data[uncompd_ptr:uncompd_ptr+1]
                 decompd_data += copied_byte
 
-            compd_pointer += 2
+            compd_ptr += 2
 
     return decompd_data
 
@@ -81,10 +83,10 @@ def compressBadly(uncompd_data):
 
     compd_data = b''
 
-    uncompd_pointer = 0
+    uncompd_ptr = 0
     data_size = len(uncompd_data)
 
-    remaining_data_size = data_size - uncompd_pointer
+    remaining_data_size = data_size - uncompd_ptr
 
     while (remaining_data_size > 0):
 
@@ -94,10 +96,10 @@ def compressBadly(uncompd_data):
             one_byte_instruct = intToByte(remaining_data_size - min_bytes_copied)
             compd_data += one_byte_instruct
 
-            literal_chunk = uncompd_data[uncompd_pointer:]
+            literal_chunk = uncompd_data[uncompd_ptr:]
             compd_data += literal_chunk
 
-            uncompd_pointer += remaining_data_size
+            uncompd_ptr += remaining_data_size
 
         else:
 
@@ -105,12 +107,12 @@ def compressBadly(uncompd_data):
             one_byte_instruct = intToByte(max_literal - min_bytes_copied)
             compd_data += one_byte_instruct
 
-            literal_chunk = uncompd_data[uncompd_pointer:uncompd_pointer + max_literal]
+            literal_chunk = uncompd_data[uncompd_ptr:uncompd_ptr + max_literal]
             compd_data += literal_chunk
 
-            uncompd_pointer += max_literal
+            uncompd_ptr += max_literal
 
-        remaining_data_size = data_size - uncompd_pointer
+        remaining_data_size = data_size - uncompd_ptr
     
     return compd_data
 
