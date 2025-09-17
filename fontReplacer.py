@@ -1,11 +1,30 @@
-# int(value, 16) # convert hex to int
-# hex(value) # convert int to hex
 
-import tim2CompTools
 from pprint import pprint
+from tim2CompTools import *
 
 
-def convertToList(font_data):
+
+    
+
+
+def dataToList(font_data_unadj):
+
+    font_bits = ""
+
+    for byte in font_data_unadj:
+
+        font_bits += intToBits(byte)
+
+    half_byte_offset = 4
+    font_bits = font_bits[half_byte_offset:]
+    
+    font_data = b''
+
+    for b in range(0, len(font_bits),8):
+
+        byte = intToByte(bitsToInt(font_bits[b:b+8]))
+
+        font_data += byte
 
     font = []
     moji = [""]
@@ -23,14 +42,15 @@ def convertToList(font_data):
         try:
             second_byte = font_data[i + 1]
         except IndexError:
+            # Todo: see if this can be removed somehow
             second_byte = 0
 
-        first_8_bits = tim2CompTools.intToBits(first_byte)
-        second_8_bits = tim2CompTools.intToBits(second_byte)
+        first_8_bits = intToBits(first_byte)
+        second_8_bits = intToBits(second_byte)
 
         bpp = 4 # bits per pixel
-        first_pix = tim2CompTools.bitsToInt(first_8_bits[:bpp]) # consider swapping the side of bpp if text comes out garbled
-        second_pix = tim2CompTools.bitsToInt(second_8_bits[bpp:])
+        second_pix = bitsToInt(first_8_bits[bpp:]) # consider swapping the side of bpp if text comes out garbled
+        first_pix = bitsToInt(second_8_bits[:bpp])
 
         #print(moji)
         moji[y] += light_values[first_pix]
@@ -55,6 +75,33 @@ def convertToList(font_data):
                 moji.append("")
 
     return font
+
+
+def listToData(moji_list):
+
+    # Todo: Fix offset for this one to match the other function
+
+    light_values = " .cO8#$Bg0MNWQ%&@"
+
+    data = b''
+
+    for moji in moji_list:
+
+        for row in moji:
+
+            for c in range(0, len(row),2):
+
+                char_1 = row[c]
+                char_2 = row[c+1]
+
+                second_4_bits = intToBits(light_values.find(char_1))[4:]
+                first_4_bits = intToBits(light_values.find(char_2))[4:]
+
+                two_pixels = bitsToInt(first_4_bits + second_4_bits)
+
+                data += intToByte(two_pixels)
+
+    return data
 
 
 def getMojisData(input_data, offset, range_len):
@@ -97,7 +144,6 @@ def codeToOffset(moji_code):
         "98":"e37"
     }
 
-    #base_offset = int("6B72F", 16)
     base_offset = int("6932F", 16)
 
     first_byte = moji_code[:2]
@@ -111,15 +157,40 @@ def codeToOffset(moji_code):
     return final_offset
 
 
+def stitchMojis(moji_1, moji_2):
+
+    newMoji = []
+
+    moji_height = 12
+    for row in range(moji_height):
+
+        new_row = moji_1[row] + moji_2[row]
+
+        newMoji.append(new_row)
+
+    return newMoji
+        
+
 if __name__ == "__main__":
 
     input_file = open('SLPM_652.55.original', 'rb')
     input_data = input_file.read()
     input_file.close()
 
-    offset = codeToOffset("8281")
-    font_data = getMojisData(input_data,offset,26)
-    pprint(convertToList(font_data))
+    offset = codeToOffset("81f1")
+    font_data = getMojisData(input_data,offset,1)
+    pprint(dataToList(font_data))
+    
+    A_list = dataToList(font_data)
+    A_data = listToData(A_list)
+
+    pprint(dataToList(A_data))
+
+    print("Passess sanity check:", font_data == A_data)
+
+    #from alphabet import alphabet
+    #AB = stitchMojis(alphabet[0], alphabet[1])
+    #pprint(AB)
 
     #prefix = input_data[:start_addr]
     #font_data = input_data[start_addr:end_addr]
