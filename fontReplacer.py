@@ -83,7 +83,7 @@ def listToData(moji_list):
 
     light_values = " .cO8#$Bg0MNWQ%&@"
 
-    data = b''
+    data = b'' + intToByte(0)
 
     for moji in moji_list:
 
@@ -101,7 +101,7 @@ def listToData(moji_list):
 
                 data += intToByte(two_pixels)
 
-    return data
+    return data[:-1]
 
 
 def getMojisData(input_data, offset, range_len):
@@ -177,16 +177,15 @@ if __name__ == "__main__":
     input_data = input_file.read()
     input_file.close()
 
-    offset = codeToOffset("81f1")
+    offset = codeToOffset("8141")
     font_data = getMojisData(input_data,offset,1)
-    pprint(dataToList(font_data))
+ 
+    test_list = dataToList(font_data)
+    test_data = listToData(test_list)
+
+    pprint(test_list)
     
-    A_list = dataToList(font_data)
-    A_data = listToData(A_list)
-
-    pprint(dataToList(A_data))
-
-    print("Passess sanity check:", font_data == A_data)
+    print("Passess sanity check:", font_data == test_data)
 
     #from alphabet import alphabet
     #AB = stitchMojis(alphabet[0], alphabet[1])
