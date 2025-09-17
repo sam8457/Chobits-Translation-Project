@@ -3,7 +3,6 @@
 # Todo: extract from multiple files at once
 # Todo: write re-inserter for multiple files
 
-import os
 import tim2CompTools
 
 # Put the file to be extracted in the same directory this script

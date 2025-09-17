@@ -2,14 +2,15 @@
 # hex(value) # convert int to hex
 
 import tim2CompTools
+from pprint import pprint
 
 
-def vizualiseFont(font_data, max_len=float("inf")):
+def convertToList(font_data):
 
-    # values range from 0 to 15
+    font = []
+    moji = [""]
+
     light_values = " .cO8#$Bg0MNWQ%&@"
-    # _.c08#
-    # commonly only 0 thru 6
 
     width = 24
     height = 12
@@ -17,16 +18,23 @@ def vizualiseFont(font_data, max_len=float("inf")):
     x = 0
     y = 0
 
-    for byte in font_data:
+    for i, first_byte in enumerate(font_data):
 
-        bits = tim2CompTools.intToBits(byte)
+        try:
+            second_byte = font_data[i + 1]
+        except IndexError:
+            second_byte = 0
 
-        bits_per_pix = 4
-        first_pix = tim2CompTools.bitsToInt(bits[:bits_per_pix])
-        second_pix = tim2CompTools.bitsToInt(bits[bits_per_pix:])
+        first_8_bits = tim2CompTools.intToBits(first_byte)
+        second_8_bits = tim2CompTools.intToBits(second_byte)
 
-        print(light_values[first_pix], end="")
-        print(light_values[second_pix], end="")
+        bpp = 4 # bits per pixel
+        first_pix = tim2CompTools.bitsToInt(first_8_bits[:bpp]) # consider swapping the side of bpp if text comes out garbled
+        second_pix = tim2CompTools.bitsToInt(second_8_bits[bpp:])
+
+        #print(moji)
+        moji[y] += light_values[first_pix]
+        moji[y] += light_values[second_pix]
 
         x += 2
 
@@ -35,13 +43,72 @@ def vizualiseFont(font_data, max_len=float("inf")):
             x = 0
             y += 1
 
-            print("|")
-
             if y % height == 0:
-                print("------------------------")
 
-            if y == max_len:
-                break
+                y = 0
+
+                font.append(moji)
+                moji = [""]
+
+            else:
+
+                moji.append("")
+
+    return font
+
+
+def getMojisData(input_data, offset, range_len):
+
+    bytes_per_char = 144
+
+    start_addr = offset
+    end_addr = start_addr + bytes_per_char * range_len
+
+    font_data = input_data[start_addr:end_addr]
+   
+    return font_data
+
+
+def codeToOffset(moji_code):
+    # equivalent of kanjiRomAdrOriginal function in source
+
+    range_offsets = {
+        "first_byte":"offset",
+        "81":"-40",
+        "82":"71",
+        "83":"123",
+        "84":"1ba",
+        "88":"237",
+        "89":"2f7",
+        "8a":"3b7",
+        "8b":"477",
+        "8c":"537",
+        "8d":"5f7",
+        "8e":"6b7",
+        "8f":"777",
+        "90":"837",
+        "91":"8f7",
+        "92":"9b7",
+        "93":"a77",
+        "94":"b37",
+        "95":"bf7",
+        "96":"cb7",
+        "97":"d77",
+        "98":"e37"
+    }
+
+    #base_offset = int("6B72F", 16)
+    base_offset = int("6932F", 16)
+
+    first_byte = moji_code[:2]
+    second_byte = moji_code[2:]
+    moji_index = int(range_offsets[first_byte], 16) + int(second_byte, 16)
+
+    moji_len = 144
+
+    final_offset = base_offset + moji_index * moji_len
+
+    return final_offset
 
 
 if __name__ == "__main__":
@@ -50,22 +117,19 @@ if __name__ == "__main__":
     input_data = input_file.read()
     input_file.close()
 
-    bytes_per_char = 144
+    offset = codeToOffset("8281")
+    font_data = getMojisData(input_data,offset,26)
+    pprint(convertToList(font_data))
 
-    start_addr = int("708B4",16) # extra line above
-    #start_addr = int("708C0",16) # extra line below
-    end_addr = start_addr + bytes_per_char #* 26
-    #end_addr = int("ED600",16)
-
-    prefix = input_data[:start_addr]
+    #prefix = input_data[:start_addr]
     #font_data = input_data[start_addr:end_addr]
-    font_data = b'\x55' * bytes_per_char
-    suffix = input_data[end_addr:]
+    #font_data = b'\x55' * bytes_per_char
+    #suffix = input_data[end_addr:]
 
     #vizualiseFont(font_data)
 
-    output_data = prefix + font_data + suffix
+    #output_data = prefix + font_data + suffix
 
-    output_file = open('SLPM_652.55', 'wb')
-    output_file.write(output_data)
-    output_file.close()
+    #output_file = open('SLPM_652.55', 'wb')
+    #output_file.write(output_data)
+    #output_file.close()
