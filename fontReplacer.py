@@ -1,10 +1,7 @@
 
+import itertools
 from pprint import pprint
 from tim2CompTools import *
-
-
-
-    
 
 
 def dataToList(font_data_unadj):
@@ -78,7 +75,10 @@ def dataToList(font_data_unadj):
 
 
 def listToData(moji_list):
-
+    """
+    Takes a two-dimmensional list of lists with strings
+    as elements of the sub-lists.
+    """
     # Todo: Fix offset for this one to match the other function
 
     light_values = " .cO8#$Bg0MNWQ%&@"
@@ -89,7 +89,7 @@ def listToData(moji_list):
 
         for row in moji:
 
-            for c in range(0, len(row),2):
+            for c in range(0, len(row), 2):
 
                 char_1 = row[c]
                 char_2 = row[c+1]
@@ -171,35 +171,146 @@ def stitchMojis(moji_1, moji_2):
     return newMoji
         
 
-if __name__ == "__main__":
+def getLabelledMojis(start_moji, length):
 
     input_file = open('SLPM_652.55.original', 'rb')
     input_data = input_file.read()
     input_file.close()
 
-    offset = codeToOffset("8141")
-    font_data = getMojisData(input_data,offset,1)
- 
-    test_list = dataToList(font_data)
-    test_data = listToData(test_list)
+    offset = codeToOffset(start_moji)
+    font_data = getMojisData(input_data,offset,length)
+    font_list = dataToList(font_data)
 
-    pprint(test_list)
-    
-    print("Passess sanity check:", font_data == test_data)
+    start_offset = int(start_moji,16)
 
-    #from alphabet import alphabet
-    #AB = stitchMojis(alphabet[0], alphabet[1])
-    #pprint(AB)
+    for i in range(length):
 
-    #prefix = input_data[:start_addr]
-    #font_data = input_data[start_addr:end_addr]
-    #font_data = b'\x55' * bytes_per_char
-    #suffix = input_data[end_addr:]
+        sjis_val = hex(start_offset + i)
 
-    #vizualiseFont(font_data)
+        print(sjis_val, "(for below char)")
+        pprint (font_list[i])
 
-    #output_data = prefix + font_data + suffix
 
-    #output_file = open('SLPM_652.55', 'wb')
-    #output_file.write(output_data)
-    #output_file.close()
+def createReservedTableFile():
+    '''
+    Creates a CSV with the hex values of all reserved character codes.
+    The actual characters still have to be manually filled out.
+    '''
+
+    reserved_ranges = [
+        "824f","82f1",
+        "8340","8396",
+        "8440","845d",
+        "897e","897e",
+    ]
+
+    reserved_values = []
+
+    for r in range(0, len(reserved_ranges), 2):
+
+        range_cur = int(reserved_ranges[r],16)
+        range_end = int(reserved_ranges[r+1],16)
+
+        while not (range_cur > range_end):
+
+            reserved_values.append(hex(range_cur))
+
+            range_cur += 1
+
+    lines = map(lambda n: n + ",\n", reserved_values)
+
+    output_file = open('reserved.csv', 'w')
+    output_file.write("".join(lines))
+    output_file.close()
+
+
+def createUnreservedTableFile():
+    '''
+    Creates a CSV with the hex values of all unreserved character codes.
+    Will automatically fill out with pairs of values.
+    '''
+
+    unreserved_ranges = [
+        "8140","81F1",
+        "8397","83d6",
+        "845e","84bc",
+        "889f","88ff",
+        "8940","897d",
+        "897f","89ff",
+        "8a40","8aff",
+    	"8b40","8bff",
+	    "8c40","8cff",
+    	"8d40","8dff",
+    	"8e40","8eff",
+    	"8f40","8fff",
+    	"9040","90ff",
+	    "9140","91ff",
+	    "9240","92ff",
+	    "9340","93ff",
+	    "9440","94ff",
+        "9540","95ff",
+        "9640","96ff",
+        "9740","97ff",
+        "9840","9872",
+    ]
+
+    lines = []
+
+    # Capital I and l are interchangeable, l will be treated as I
+    possible_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz、.?!" '
+    char_combos = list(itertools.product(possible_chars, repeat=2))
+    #combos_list = list(map(lambda pair: pair[0] + pair[1], char_combos))
+    #print(combos_list)
+
+    char_combos_index = 0
+
+    for r in range(0, len(unreserved_ranges), 2):
+
+        range_cur = int(unreserved_ranges[r],16)
+        range_end = int(unreserved_ranges[r+1],16)
+
+        while not (range_cur > range_end):
+
+            try:
+                first_char, second_char = char_combos[char_combos_index]
+                this_char_combo = first_char + second_char
+            except IndexError:
+                this_char_combo = ""
+
+            line = hex(range_cur) + "," + this_char_combo + "\n"
+
+            lines.append(line)
+
+            range_cur += 1
+            char_combos_index += 1
+
+    output_file = open('unreserved.csv', 'w')
+    output_file.write("".join(lines))
+    output_file.close()
+
+
+if __name__ == "__main__":
+
+    createUnreservedTableFile()
+
+
+    '''
+    from alphabet import alphabet
+    AB = stitchMojis(alphabet[0], alphabet[1])
+    pprint(AB)
+    font_data = listToData([AB])
+
+    # Sanity check
+    print("Sanity check passed:", dataToList(listToData([AB])) == [AB])
+
+    start_addr = codeToOffset("8141")
+    end_addr = codeToOffset("8142")
+    prefix = input_data[:start_addr]
+    suffix = input_data[end_addr:]
+
+    output_data = prefix + font_data + suffix
+
+    output_file = open('SLPM_652.55', 'wb')
+    output_file.write(output_data)
+    output_file.close()
+    '''
