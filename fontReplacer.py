@@ -49,7 +49,6 @@ def dataToList(font_data_unadj):
         second_pix = bitsToInt(first_8_bits[bpp:]) # consider swapping the side of bpp if text comes out garbled
         first_pix = bitsToInt(second_8_bits[:bpp])
 
-        #print(moji)
         moji[y] += light_values[first_pix]
         moji[y] += light_values[second_pix]
 
@@ -297,10 +296,13 @@ if __name__ == "__main__":
     If zero characters follow the comma, leave the original
     '''
 
+    # program runs but does not boot, figure out why
+
     from alphabet import alph, yen
     
     input_file = open('SLPM_652.55.original', 'rb')
-    output_data = input_file.read()
+    input_data = input_file.read()
+    output_data = input_data
     input_file.close()
 
     encoding_table = open('doubleShift-RIS.csv','r')
@@ -311,15 +313,13 @@ if __name__ == "__main__":
 
         char_code, moji = line.split(",")
 
-        start_addr = codeToOffset(char_code[2:], 0)
+        start_addr = codeToOffset(char_code[2:])
         char_len = 144
         end_addr = start_addr + char_len
 
         prefix = output_data[:start_addr]
         original_data = output_data[start_addr:end_addr]
         suffix = output_data[end_addr:]
-
-        # Determine which length of char we're using
 
         match len(moji):
 
@@ -333,7 +333,7 @@ if __name__ == "__main__":
                 index_2 = chars.find(second_roman)
 
                 moji_list = stitchMojis(alph[index_1], alph[index_2])
-                final_data = listToData(moji_list)
+                final_data = listToData([moji_list])
 
             case 1:
                 if moji == "¥":
@@ -344,9 +344,11 @@ if __name__ == "__main__":
             case _:
                 final_data = original_data
             
-
         output_data = prefix + final_data + suffix
 
     output_file = open('SLPM_652.55', 'wb')
     output_file.write(output_data)
     output_file.close()
+
+    print("Out len: ", len(output_data))
+    print(" In len: ", len(input_data))
