@@ -116,7 +116,7 @@ def getMojisData(input_data, offset, range_len):
     return font_data
 
 
-def codeToOffset(moji_code):
+def codeToOffset(moji_code, base_offset = int("6932F", 16)):
     # equivalent of kanjiRomAdrOriginal function in source
 
     range_offsets = {
@@ -143,8 +143,6 @@ def codeToOffset(moji_code):
         "97":"d77",
         "98":"e37"
     }
-
-    base_offset = int("6932F", 16)
 
     first_byte = moji_code[:2]
     second_byte = moji_code[2:]
@@ -228,6 +226,10 @@ def createUnreservedTableFile():
     '''
     Creates a CSV with the hex values of all unreserved character codes.
     Will automatically fill out with pairs of values.
+
+    The char_combos just so happen to be *exactly* the same length
+    as the number of values within the unreserved_ranges list, so
+    no extra empty lines are produced in the .csv file.
     '''
 
     unreserved_ranges = [
@@ -259,8 +261,6 @@ def createUnreservedTableFile():
     # Capital I and l are interchangeable, l will be treated as I
     possible_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz、.?!" '
     char_combos = list(itertools.product(possible_chars, repeat=2))
-    #combos_list = list(map(lambda pair: pair[0] + pair[1], char_combos))
-    #print(combos_list)
 
     char_combos_index = 0
 
@@ -290,27 +290,63 @@ def createUnreservedTableFile():
 
 
 if __name__ == "__main__":
-
-    createUnreservedTableFile()
-
-
     '''
-    from alphabet import alphabet
-    AB = stitchMojis(alphabet[0], alphabet[1])
-    pprint(AB)
-    font_data = listToData([AB])
+    Uses doubleShift-RIS.csv file for character combo mapping
+    If 2 characters follow the comma, it needs to be stitched from the corresponding font data in alphabet variable
+    If 1 character follows the comma, leave the original, unless its ¥, then substitute the data in the yen variable
+    If zero characters follow the comma, leave the original
+    '''
 
-    # Sanity check
-    print("Sanity check passed:", dataToList(listToData([AB])) == [AB])
+    from alphabet import alph, yen
+    
+    input_file = open('SLPM_652.55.original', 'rb')
+    output_data = input_file.read()
+    input_file.close()
 
-    start_addr = codeToOffset("8141")
-    end_addr = codeToOffset("8142")
-    prefix = input_data[:start_addr]
-    suffix = input_data[end_addr:]
+    encoding_table = open('doubleShift-RIS.csv','r')
+    encoding_data = encoding_table.read()
+    encoding_lines = encoding_data.split("\n")
+    
+    for line in encoding_lines:
 
-    output_data = prefix + font_data + suffix
+        char_code, moji = line.split(",")
+
+        start_addr = codeToOffset(char_code[2:], 0)
+        char_len = 144
+        end_addr = start_addr + char_len
+
+        prefix = output_data[:start_addr]
+        original_data = output_data[start_addr:end_addr]
+        suffix = output_data[end_addr:]
+
+        # Determine which length of char we're using
+
+        match len(moji):
+
+            case 2:
+                first_roman = moji[0]
+                second_roman = moji[1]
+
+                chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz、.?!" '
+
+                index_1 = chars.find(first_roman)
+                index_2 = chars.find(second_roman)
+
+                moji_list = stitchMojis(alph[index_1], alph[index_2])
+                final_data = listToData(moji_list)
+
+            case 1:
+                if moji == "¥":
+                    final_data = listToData(yen)
+                else:
+                    final_data = original_data
+
+            case _:
+                final_data = original_data
+            
+
+        output_data = prefix + final_data + suffix
 
     output_file = open('SLPM_652.55', 'wb')
     output_file.write(output_data)
     output_file.close()
-    '''
