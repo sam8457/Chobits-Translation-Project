@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 
+from codecs import decode#, encode
 import json
 from tim2CompTools import *
 
+def isValidMoji(value):
 
-def isValidSJIS(value):
-
-    if value.hex()[2:] == '0a':
+    if value.hex()[2:] == '0a': # case sensitive
         return True, "newline"
 
-    # review which ones exactly are reserved, this causes nearly every textbox to be marked
+    # Todo: review which ones are reserved, this causes nearly every box to be marked
+    # Should only be for non-kana characters (e.g., 'Let Me Be With You')
+    # Put the ones that are modified but reserved with the unreserved ones, rename the variables
     reserved_ranges = [
         "824f","82f1",
         "8340","8396",
@@ -82,6 +84,7 @@ num_boxes = 0
 
 while True:
 
+    this_box = ""
     box_end = input_data.find(end_code, last_box+1)
 
     if box_end == -1:
@@ -93,30 +96,36 @@ while True:
     while True:
 
         char_code = input_data[box_index-2:box_index]
-        valid, type = isValidSJIS(char_code)
+        valid, type = isValidMoji(char_code)
 
         if not valid:
             last_box = box_end
             break
 
-        if type == 'newline':
+        elif type == 'newline':
             box_index -= 1
+            this_box = "\n" + this_box
             continue
         
-        if type == 'reserved':
+        elif type == 'reserved':
+            #this_box += "##" #uncomment when reserved is fixed
+            this_box = decode(char_code, "shiftjis") + this_box # remove when above is uncommented
             reserved = True
 
-        box_index -= 2
+        else:
+            this_box = decode(char_code, "shiftjis") + this_box
 
-    # need to add support for converting input data to SJIS chars, then adding them to this_box (do it in the loop above)
-    this_box = input_data[box_index:box_end]
+        box_index -= 2
 
     try:
         script_json[num_boxes] = {
             "end_offset":box_end,
-            "orig":this_box[0], # still needs converted to sjis
+            "orig":this_box,
             "orig_len":len(this_box),
             "reserved?":reserved,
+            "tran":None,
+            "tran_len":None,
+            "shorten?":None,
         }
     except IndexError:
         print("First char_code of box",num_boxes,":",char_code,"at offset",box_end)
@@ -125,4 +134,3 @@ while True:
 
 with open('script.json','w') as file:
     json.dump(script_json, file, ensure_ascii=False, indent=2)
-
