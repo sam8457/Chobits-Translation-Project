@@ -146,7 +146,7 @@ def extractScript():
             script_json[num_boxes] = {
                 "end_offset":box_end,
                 "orig":this_box,
-                "orig_len":box_end - box_index, #+ 1, # Todo: test len more
+                "orig_len":box_end - box_index + 1, # Todo: test len more
                 "custom?":customized,
                 "tran":"Tokyo... Its the big city,\nhuh? Back home was all grass\nand cows, so it was pretty lax.",
                 "tran_len":None,

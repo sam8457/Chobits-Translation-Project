@@ -40,7 +40,7 @@ def encode(text_unadj, length):
         char1 = text[i]
 
         if char1 == '*':
-            text_data += bytes.fromhex(encoding_dict[moji])
+            text_data += bytes.fromhex('0A')
             i += 1
             continue
 
@@ -48,7 +48,7 @@ def encode(text_unadj, length):
             char2 = text[i+1]
         except IndexError:
             char2 = " "
-            break
+            #break
 
         moji = char1 + char2
 
