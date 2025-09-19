@@ -7,11 +7,14 @@ import json
 
 def encode(text_unadj, length):
 
+    print(length)
     text = text_unadj.replace( "\n","*")
-    space_left = len(text) - length
+    print(len(text))
+    space_left = length - len(text)
+    print(space_left)
     text = text + (" " * space_left)
-
-    print(text)
+    print(len(text))
+    
 
     encoding_file = open('doubleShift-RIS.csv','r')
     encoding_data = encoding_file.read()
@@ -32,7 +35,6 @@ def encode(text_unadj, length):
         encoding_dict[moji] = code[2:] 
 
     text_data = b''
-    print(text_data)
 
     i = 0
     while i < len(text):
@@ -67,7 +69,7 @@ def insertScript():
     out_data = input_data
     orig_file.close()
 
-    tran_file = open('script.json','r')
+    tran_file = open('tran_script.json','r')
     tran_data = json.loads(tran_file.read())
    
     for box_num, box_data in tran_data.items():
@@ -80,7 +82,7 @@ def insertScript():
 
         end = box_data["end_offset"]
         length = box_data["orig_len"]
-        start = end - length + 1 # add one ??????????????????????
+        start = end - length #+ 2 # add one ??????????????????????
 
         new_box_text = box_data["tran"]
         new_box_data = encode(new_box_text, length)
@@ -89,10 +91,14 @@ def insertScript():
         old_box_data = out_data[start:end]
         suffix = out_data[end:]
 
+        print("json:")
         pprint(box_data)
-        print(old_box_data.hex())
-        print()
+
+        print("New hex:")
         print(new_box_data.hex())
+
+        print("Old hex:")
+        print(old_box_data.hex())
         print()
 
         out_data = prefix + new_box_data + suffix
@@ -101,9 +107,11 @@ def insertScript():
     output_file.write(out_data)
     output_file.close()
 
-    print("Out len: ", len(out_data))
-    print(" In len: ", len(input_data))
+    print("Old len: ", len(input_data))
+    print("New len: ", len(out_data))
 
-from extractScript import extractScript
-extractScript() # remove when testing is done
+from insertFont import insertFont
+insertFont()
+#from extractScript import extractScript
+#extractScript()
 insertScript()

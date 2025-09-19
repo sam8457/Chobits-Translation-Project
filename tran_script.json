@@ -7,5 +7,23 @@
     "tran": "Tokyo... Its the big city,\nhuh? Back home was all grass\nand cows, so it was pretty lax.",
     "tran_len": null,
     "shorten?": null
+  },
+  "1": {
+    "end_offset": 1061880,
+    "orig": "都会はなんちゅーか華やかで、\nいろいろと目にうつるものが…",
+    "orig_len": 57,
+    "custom?": false,
+    "tran": "Tokyo... Its the big city,\nhuh? Back",
+    "tran_len": null,
+    "shorten?": null
+  },
+  "2": {
+    "end_offset": 1061947,
+    "orig": "目的地までは、約４５分です。\n池袋で乗り換えて…",
+    "orig_len": 47,
+    "custom?": false,
+    "tran": "Tokyo... Its the big city,\nhuh? Back",
+    "tran_len": null,
+    "shorten?": null
   }
 }
