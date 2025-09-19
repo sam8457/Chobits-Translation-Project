@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
 
-# Todo: extract from multiple files at once
-# Todo: write re-inserter for multiple files
-
 import tim2CompTools
 
 # Put the file to be extracted in the same directory this script
 # Can use grep ./ -r -e "TIM2" in linux terminal to search for files containing TIM2 images
 INPUT_NAME = "A003" # Example: A001
 
-input_file = open(INPUT_NAME, 'rb')
+input_file = open("INPUT_NAME", 'rb')
 input_data = input_file.read()
 input_file.close()
 

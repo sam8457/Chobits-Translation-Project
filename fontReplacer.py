@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 
 import itertools
 from pprint import pprint
@@ -296,7 +297,10 @@ if __name__ == "__main__":
     If zero characters follow the comma, leave the original
     '''
 
-    # program runs but does not boot, figure out why
+    # Todo: figure out why game crashes/slows down sometimes (ex: first room scene with chi after waking up)
+    # slowdown seems to happen around the time where its looking at the ceiling
+    # could be because data is too early or too late relative to what the game expects
+    # May need to modify less text overall, possibly combine lower L's and capital I's
 
     from alphabet import alph, yen
     
