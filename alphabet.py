@@ -1,3 +1,16 @@
+#!/usr/bin/env python3
+
+'''
+This file must be created manually. alph should contain
+12x12 ASCII art of the desired roman characters.
+
+Legal characters: [ .cO8#$Bg0MNWQ%&@] (spaces are empty)
+Game seems to treat values above # as colors.
+
+Todo: chars don't look good in game, I need to work
+on editing them more.
+'''
+
 alph = [
  ['     ..     ',
   '     OO     ',
