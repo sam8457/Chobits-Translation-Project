@@ -1,0 +1,64 @@
+
+End code: 0A 00
+
+      Start codes | text 
+      00 01 XX XX | 
+            00 20 | 
+            25 73 | 
+11 2A 14 7F FF 00 | 
+      00 7C 00 00 | 
+         00 0F 07 |
+      00 0F 07 DE |
+      00 0F 07 DC |
+      00 0F 07 DA |
+
+Before textboxes:
+    These don't seem consistent enough that I can use them
+    Defer to end-code based method instead
+
+Uncategorized:
+
+Categorized:
+20 11 2A 14 00 73 00 00
+20 11 2A 14 00 73 00 00 
+
+07 D5 11 29 00 06 00 20 - I know there's plenty of these
+
+00 01 11 31 00 0F 07 00 
+04 01 11 31 00 0F 07 D2 
+03 01 11 31 00 0F 07 D7
+
+15 02 11 31 00 10 00 14 
+15 02 11 31 00 10 00 15
+00 01 11 31 00 10 00 17 
+15 02 11 31 00 10 00 18 
+00 01 11 31 00 10 00 1B 
+
+1C 11 2A 14 7F FF 00 00
+20 11 2A 14 7F FF 00 00 
+D1 11 2A 14 7F FF 00 00 
+D3 11 2A 14 7F FF 00 00 
+20 11 2A 14 7F FF 00 00 
+
+      7F FF 00 00 25 73 
+      7F FF 00 00 25 73
+2A 14 7F FF 00 00 25 73
+2A 14 7F FF 00 00 25 73 
+
+
+After textboxes:
+0A 00 15 02 10 01 01 01
+0A 00 15 02 16 03 00 EC 
+0A 00 15 02 16 03 00 98 
+0A 00 15 02 16 03 00 42 
+0A 00 15 02 11 2C 80 00 
+0A 00 15 02 11 36 00 20 
+
+
+Here's the methodology:
+    Start from each stop code in the output
+    Move backwards 2 bytes at a time
+    If present in SJIS allowed values, add to beginning of text box string
+    If second value is 0A, its a newline character
+    Else, we've found the beginning of the text box
+    Repeat
