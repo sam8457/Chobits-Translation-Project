@@ -1,20 +1,14 @@
 #!/usr/bin/env python3
 
-
 from pprint import pprint
 import json
 
 
 def encode(text_unadj, length):
 
-    print(length)
     text = text_unadj.replace( "\n","*")
-    print(len(text))
     space_left = length - len(text)
-    print(space_left)
     text = text + (" " * space_left)
-    print(len(text))
-    
 
     encoding_file = open('doubleShift-RIS.csv','r')
     encoding_data = encoding_file.read()
@@ -82,24 +76,13 @@ def insertScript():
 
         end = box_data["end_offset"]
         length = box_data["orig_len"]
-        start = end - length #+ 2 # add one ??????????????????????
+        start = end - length
 
         new_box_text = box_data["tran"]
         new_box_data = encode(new_box_text, length)
 
         prefix = out_data[:start]
-        old_box_data = out_data[start:end]
         suffix = out_data[end:]
-
-        print("json:")
-        pprint(box_data)
-
-        print("New hex:")
-        print(new_box_data.hex())
-
-        print("Old hex:")
-        print(old_box_data.hex())
-        print()
 
         out_data = prefix + new_box_data + suffix
 
@@ -112,6 +95,4 @@ def insertScript():
 
 from insertFont import insertFont
 insertFont()
-#from extractScript import extractScript
-#extractScript()
 insertScript()

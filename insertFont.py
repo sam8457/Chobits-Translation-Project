@@ -104,7 +104,12 @@ def ASCIItoData(moji_list):
             for c in range(0, len(row), 2):
 
                 char_1 = row[c]
-                char_2 = row[c+1]
+                try:
+                    char_2 = row[c+1]
+                except IndexError:
+                    print('Probelm occured with the following moji:')
+                    pprint(moji)
+                    raise
 
                 second_4_bits = intToBits(light_values.find(char_1))[4:]
                 first_4_bits = intToBits(light_values.find(char_2))[4:]
