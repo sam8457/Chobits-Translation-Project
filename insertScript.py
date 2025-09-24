@@ -82,6 +82,11 @@ def insertScript():
         start = end - length
 
         new_box_text = box_data["tran"]
+
+        if len(new_box_text.replace("\n","")) > len(box_data['orig'].replace("\n","") * 2):
+            print("Error: data in box", box_num, "too long")
+            raise
+
         try:
             new_box_data = encode(new_box_text, length)
         except KeyError:
@@ -100,8 +105,9 @@ def insertScript():
     print("Old len: ", len(input_data))
     print("New len: ", len(out_data))
 
-from insertFont import insertFont
-insertFont()
-insertScript()
+if __name__ == "__main__":
+    from insertFont import insertFont
+    insertFont()
+    insertScript()
 
-# Bookmark: 37
+# Bookmark: 160
