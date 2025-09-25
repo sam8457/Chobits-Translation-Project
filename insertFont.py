@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-from alphabet import alph, yen
+from alphabet import alph, two_byte_alph,yen
 from pprint import pprint
 from tim2CompTools import *
 import itertools
@@ -364,13 +364,25 @@ def insertFont():
                 first_roman = moji[0]
                 second_roman = moji[1]
 
-                chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz、.?!" '
+                if first_roman == "#":
 
-                index_1 = chars.find(first_roman)
-                index_2 = chars.find(second_roman)
+                    moji_list = two_byte_alph[first_roman + second_roman]
+                    final_data = ASCIItoData([moji_list])
+                    #final_data = original_data
+                    #orig_offset = codeToOffset(char_code[2:])
+                    #orig_data = getMojisData(input_data, orig_offset, 1)
+                    #final_data = orig_data
+                    pass # work on, may need to have dedicated files for these
 
-                moji_list = stitchMojis(alph[index_1], alph[index_2])
-                final_data = ASCIItoData([moji_list])
+                else:
+
+                    chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz、.?!" '
+
+                    index_1 = chars.find(first_roman)
+                    index_2 = chars.find(second_roman)
+
+                    moji_list = stitchMojis(alph[index_1], alph[index_2])
+                    final_data = ASCIItoData([moji_list])
 
             case 1:
                 if moji == "¥":
@@ -393,6 +405,6 @@ def insertFont():
 
 if __name__ == "__main__":
 
-    #printMojisLabelled("8453", 9)
-    insertFont() # uncomment to modify game script
+    printMojisLabelled("8440", 30)
+    #insertFont() # uncomment to modify game script
 

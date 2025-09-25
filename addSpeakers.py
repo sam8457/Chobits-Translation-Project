@@ -15,6 +15,7 @@ def addNames():
         bytes.fromhex("1004"):"Ms. Hibiya",
         bytes.fromhex("1007"):"Shinbo",
         bytes.fromhex("100A"):"Sumomo",
+        bytes.fromhex("1005"):"Ms. Shimizu",
     }
 
     tran_file = open('tran_script.json','r')

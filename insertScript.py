@@ -85,6 +85,11 @@ def insertScript():
 
         if len(new_box_text.replace("\n","")) > len(box_data['orig'].replace("\n","") * 2):
             print("Error: data in box", box_num, "too long")
+            print("This can be caused by translations being too long, or having newlines on odd-numbered columns")
+            raise
+
+        if new_box_text.count("\n") != box_data['orig'].count("\n"):
+            print("Error: number of newlines for box", box_num, "does not match original")
             raise
 
         try:
@@ -107,7 +112,7 @@ def insertScript():
 
 if __name__ == "__main__":
     from insertFont import insertFont
-    insertFont()
+    insertFont() # separate these out later
     insertScript()
 
-# Bookmark: 160
+# Bookmark: 368

@@ -135,12 +135,13 @@ def translatePaid():
             else:
                 box_data["shorten?"] = False
 
+            print("Translated to:", auto_translation)
+
         except:
             print("Translation error.") # can finish printing to file if this happens
             #raise
             break
 
-        print("Translated to:", auto_translation)
 
     print("Total tokens used:", total_tokens)
 
