@@ -114,5 +114,3 @@ if __name__ == "__main__":
     from insertFont import insertFont
     insertFont() # separate these out later
     insertScript()
-
-# Bookmark: 368
