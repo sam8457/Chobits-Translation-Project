@@ -65,17 +65,20 @@ def insertScript():
 
     tran_file = open('tran_script.json','r')
     tran_data = json.loads(tran_file.read())
+
+    # These are for progress reporting only
+    total_boxes = "0"
+    num_translated = 0
    
     for box_num, box_data in tran_data.items():
+
+        total_boxes = box_num
 
         if box_data["tran"] == None:
             continue
 
         if len(box_data["tran"]) == 0:
             continue
-
-        #if box_data["custom?"] == True:
-        #    continue
 
         end = box_data["end_offset"]
         length = box_data["orig_len"]
@@ -103,12 +106,16 @@ def insertScript():
 
         out_data = prefix + new_box_data + suffix
 
+        num_translated += 1
+
     output_file = open('SLPM_652.55', 'wb')
     output_file.write(out_data)
     output_file.close()
 
     print("Old len: ", len(input_data))
     print("New len: ", len(out_data))
+    percent_translated = num_translated / int(total_boxes) * 100
+    #print("Percent translated:", str(round(percent_translated, 1)) + "%")
 
 if __name__ == "__main__":
     from insertFont import insertFont

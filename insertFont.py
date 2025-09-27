@@ -55,8 +55,9 @@ def dataToASCII(font_data_unadj):
         first_8_bits = intToBits(first_byte)
         second_8_bits = intToBits(second_byte)
 
-        bpp = 4 # bits per pixel
-        second_pix = bitsToInt(first_8_bits[bpp:]) # consider swapping the side of bpp if text comes out garbled
+        # This might seem backwards but I think the Chobits devs implemented it backwards in the original
+        bpp = 4 
+        second_pix = bitsToInt(first_8_bits[bpp:])
         first_pix = bitsToInt(second_8_bits[:bpp])
 
         moji[y] += light_values[first_pix]
