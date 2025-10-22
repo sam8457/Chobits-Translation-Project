@@ -18,10 +18,6 @@ def encode(text_unadj, length):
         "\n":'0A'
     }
 
-    # todo: figure out what to do if fed a newline char in the middle of a two-byte moji
-    # alternatively, remember to have all /n characters end on even columns
-    # use Migu 2M font to line japanese and roman text up for better editing
-
     for line in encoding_lines:
 
         code, moji = line.split(",")
@@ -88,17 +84,16 @@ def insertScript():
 
         if len(new_box_text.replace("\n","")) > len(box_data['orig'].replace("\n","") * 2):
             print("Error: data in box", box_num, "too long")
-            print("This can be caused by translations being too long, or having newlines on odd-numbered columns")
             raise
 
         if new_box_text.count("\n") != box_data['orig'].count("\n"):
-            print("Error: number of newlines for box", box_num, "does not match original")
+            print("Error: number of newlines for box", box_num, "doesn't match original")
             raise
 
         try:
             new_box_data = encode(new_box_text, length)
         except KeyError:
-            print("Error on box",box_num)
+            print("Error: on box", box_num + ",", "invalid character or wrong column number")
             raise
 
         prefix = out_data[:start]
@@ -118,6 +113,8 @@ def insertScript():
     #print("Percent translated:", str(round(percent_translated, 1)) + "%")
 
 if __name__ == "__main__":
-    from insertFont import insertFont
-    insertFont() # separate these out later
+    #from insertFont import insertFont
+    #insertFont() # separate these out later
     insertScript()
+    # use Migu 2M font to line japanese and roman text up for better editing
+    

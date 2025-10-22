@@ -6,33 +6,33 @@ from pprint import pprint
 
 
 def addNames():
-    # Use this to add names to textboxes to aid in translation, requires tran_script.json file to already exist
+    # Use this to add speaker's names to textboxes to aid in translation, requires tran_script.json file to already exist
 
     # Add more names as found. Refer to faceExploration.txt for method of finding
-    # Some lines don't contain names, when that happens it keeps the same face as last time
+    # Some boxes don't have speaker codes, when that happens the game keeps the same face as last time
     names = {
         bytes.fromhex("1000"):"Hidden/Unknown",
         bytes.fromhex("1001"):"Hideki",
-        bytes.fromhex("1002"):"Speaker 1002", # 18 matches
+        bytes.fromhex("1002"):"Yuzuki", # 18 matches, Yuzuki?
         bytes.fromhex("1003"):"Chi",
         bytes.fromhex("1004"):"Ms. Hibiya",
         bytes.fromhex("1005"):"Ms. Shimizu",
         bytes.fromhex("1006"):"Yumi",
         bytes.fromhex("1007"):"Shinbo",
-        bytes.fromhex("1008"):"Speaker 1008", # 428, Minoru?, mentions Chobits
+        bytes.fromhex("1008"):"Minoru",
         bytes.fromhex("1009"):"Mr. Omura",
         bytes.fromhex("100A"):"Sumomo",
-        bytes.fromhex("100B"):"Speaker 100B", # 25 matches
-        bytes.fromhex("100C"):"Speaker 100C", # 89 matches
-        bytes.fromhex("100D"):"Speaker 100D", # 56 
-        bytes.fromhex("100E"):"Speaker 100E", # 201
-        bytes.fromhex("100F"):"Speaker 100F", # 79
-        bytes.fromhex("1010"):"Speaker 1010", # 4
+        bytes.fromhex("100B"):"Peep Show Guy",
+        bytes.fromhex("100C"):"Kojima", 
+        bytes.fromhex("100D"):"Kotoko", 
+        bytes.fromhex("100E"):"Ueda",
+        bytes.fromhex("100F"):"Store Clerk", # 79, store clerk?
+        bytes.fromhex("1010"):"Speaker 1010", # 4, Yuzuki?
         bytes.fromhex("1011"):"Speaker 1011", # 21
         bytes.fromhex("1012"):"Speaker 1012", # 0 
         bytes.fromhex("1013"):"Speaker 1013", # 0
-        bytes.fromhex("1014"):"Speaker 1014", # 35 
-        bytes.fromhex("1015"):"Speaker 1015", # 35
+        bytes.fromhex("1014"):"Zima", # 35 
+        bytes.fromhex("1015"):"Dita", # 35
         bytes.fromhex("1016"):"Speaker 1016", # 0
         bytes.fromhex("1017"):"Speaker 1017", # 0
         bytes.fromhex("1018"):"Speaker 1018", # 0

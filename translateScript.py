@@ -85,7 +85,7 @@ def translatePaid():
     prompt = "Give brief English translations of the following Japanese text including no additional remarks or quotes."
     total_tokens = 0
 
-    req_limit = 10 # can adjust
+    req_limit = 20 # can adjust
     req_count = 0
 
     for nth_box, box_data in tran_data.items():
@@ -120,12 +120,39 @@ def translatePaid():
             response = client.responses.create(
                 model=model,
                 reasoning={"effort": "minimal"}, # comment out for models older than gpt-5
+                text={"verbosity": "low"},
                 input=input
             )   
 
             auto_translation = response.output_text
             total_tokens += response.usage.total_tokens
             req_count += 1
+
+            # Fix common GPT mistakes here
+            substitutes = {
+                "‘":"'",
+                "’":"'",
+                "“":"'",
+                "”":"'",
+                "\"":"'",
+                "(":"...",
+                ")":"...",
+                "-":" ",
+                "–":"..",
+                "—":"... ",
+                "…":"...",
+                "Hiromi":"Yumi",
+                "computer":"persocom",
+                "chan":"Chan",
+                "kun":"Kun",
+                "Chii":"Chi",
+                "Tch":"Chi",
+                #"tch":"Chi", # too many false positives
+                "Yuzuhime":"Yuzuki",
+            }
+
+            for char, sub in substitutes.items():
+                auto_translation = auto_translation.replace(char, sub)
 
             box_data["tran"] = auto_translation
             box_data["tran_len"] = len(auto_translation)
@@ -139,7 +166,6 @@ def translatePaid():
 
         except:
             print("Translation error.") # can finish printing to file if this happens
-            #raise
             break
 
 
@@ -152,4 +178,3 @@ def translatePaid():
 if __name__ == "__main__":
 
     translatePaid()
-    # Bookmark: 795
