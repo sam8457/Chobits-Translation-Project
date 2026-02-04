@@ -28,7 +28,7 @@ def addNames():
         bytes.fromhex("100E"):"Ueda",
         bytes.fromhex("100F"):"Store Clerk", # 79, store clerk?
         bytes.fromhex("1010"):"Speaker 1010", # 4, Yuzuki?
-        bytes.fromhex("1011"):"Speaker 1011", # 21
+        bytes.fromhex("1011"):"Freya", # 21
         bytes.fromhex("1012"):"Speaker 1012", # 0 
         bytes.fromhex("1013"):"Speaker 1013", # 0
         bytes.fromhex("1014"):"Zima", # 35 

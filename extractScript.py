@@ -69,22 +69,24 @@ def extractScript():
     script_json = {
     #    "Example":{
     #        "end_offset":"103353",
-    #        "orig":"こにちは、\n私の名前わサムです。",
+    #        "orig":"こにちは、\n私の名前わアレクスです。",
     #        "orig_len":31,
     #        "customized?":False,
-    #        "tran":"Hello, \nmy name is Sam.",
+    #        "tran":"Hello, \nmy name is Alex.",
     #        "tran_len":23,
     #        "shorten?":False,
     #    },
     }
 
-    end_code = bytes.fromhex('0A00')
+    #end_code = bytes.fromhex('0014') # for inventory item names
+    end_code = bytes.fromhex('2564') # for %d variables
+    #end_code = bytes.fromhex('0A00') # for general text boxes
     #end_code = bytes.fromhex('0A0015') # more selective but may not include everything
     #end_code = bytes.fromhex('0A001502')
     first_box_offset = 1061803 - 1
     last_box_offset = 2852664
 
-    end_code_2 = bytes.fromhex('0000')
+    end_code_2 = bytes.fromhex('FFFF') # change back to 0000 when done
     first_box_offset_2 = 1993136
     last_box_offset_2 = 1998400
 
@@ -162,7 +164,7 @@ def extractScript():
 
     print('Total chars in orig:', total_chars)
 
-    with open('script.json','w') as file:
+    with open('missed_script2.json','w') as file:
         json.dump(script_json, file, ensure_ascii=False, indent=2)
 
 if __name__ == "__main__":

@@ -406,6 +406,6 @@ def insertFont():
 
 if __name__ == "__main__":
 
-    printMojisLabelled("8440", 30)
+    printMojisLabelled("8194", 1)
     #insertFont() # uncomment to modify game script
 

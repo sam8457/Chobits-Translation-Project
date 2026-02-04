@@ -15,7 +15,7 @@ def translateFree():
     #translator = deep_translator.LingueeTranslator(source='japanese', target='english') # bad
     #translator = deep_translator.MyMemoryTranslator(source='ja-JP', target='en-US') # decent
 
-    tran_file = open('tran_script.json','r')
+    tran_file = open('missed_script2.json','r') # change back to trans_script.json when done
     tran_data = json.loads(tran_file.read())
     tran_file.close()
 
@@ -60,7 +60,7 @@ def translateFree():
         print()
 
 
-    with open('tran_script.json','w') as file:
+    with open('missed_script2.json','w') as file:
         json.dump(tran_data, file, ensure_ascii=False, indent=2)
 
 
@@ -68,7 +68,7 @@ def translateFree():
 def translatePaid():
     # Prefer this translator. It requires a paid API key from https://platform.openai.com
 
-    tran_file = open('tran_script.json','r')
+    tran_file = open('missed_script2.json','r') # change back to trans_script.json when done
     tran_data = json.loads(tran_file.read())
     tran_file.close()
 
@@ -85,7 +85,7 @@ def translatePaid():
     prompt = "Give brief English translations of the following Japanese text including no additional remarks or quotes."
     total_tokens = 0
 
-    req_limit = 20 # can adjust
+    req_limit = 25 # can adjust
     req_count = 0
 
     for nth_box, box_data in tran_data.items():
@@ -137,6 +137,8 @@ def translatePaid():
                 "\"":"'",
                 "(":"...",
                 ")":"...",
+                "[":"'",
+                "]":"'",
                 "-":" ",
                 "–":"..",
                 "—":"... ",
@@ -149,6 +151,8 @@ def translatePaid():
                 "Tch":"Chi",
                 #"tch":"Chi", # too many false positives
                 "Yuzuhime":"Yuzuki",
+                "Honsuwa":"Motosuwa",
+                "Shimpo":"Shinbo",
             }
 
             for char, sub in substitutes.items():
@@ -171,7 +175,7 @@ def translatePaid():
 
     print("Total tokens used:", total_tokens)
 
-    with open('tran_script.json','w') as file:
+    with open('missed_script2.json','w') as file:
         json.dump(tran_data, file, ensure_ascii=False, indent=2)
 
 

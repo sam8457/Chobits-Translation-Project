@@ -867,7 +867,6 @@ two_byte_alph = {
 "#7":
 ['       ##########       ',
  '               ##       ',
- '               ##       ',
  '              ##        ',
  '             ##         ',
  '            ##          ',
@@ -875,7 +874,8 @@ two_byte_alph = {
  '          ##            ',
  '         ##             ',
  '        ##              ',
- '       ##               ',
+ '                        ',
+ '                        ',
  '                        '],
 "#8":
 ['         ######         ',
@@ -903,7 +903,7 @@ two_byte_alph = {
  '                        ',
  '                        ',
  '                        '],
-"#@": # O button
+"#@": # O button, 8446
 ['     &&&&&&%&%&%%%      ',
  '   &&&&%%%%%%Q%Q%QQQ    ',
  '  &&%%%$BBBBBBB$QQQQQ   ',
@@ -916,7 +916,7 @@ two_byte_alph = {
  '   QQQQQQQQQQQQQWWWW    ',
  '    NNWWWWWWWWWWWNN     ',
  '                        '],
-"#+": # X button
+"#+": # X button, 8447
 ['     &&&&&&%&%&%%%      ',
  '   &&&&%%%%%%Q%Q%QQQ    ',
  '  &&%%%QQQQQQQQQQQQQQ   ',
@@ -929,7 +929,7 @@ two_byte_alph = {
  '   QQQQQQQQQQQQQWWWW    ',
  '    NNWWWWWWWWWWWNN     ',
  '                        '],
-"#^": # Triangle button
+"#^": # Triangle button, 8448
 ['     &&&&&&%&%&%%%      ',
  '   &&&&%%%%%%Q%Q%QQQ    ',
  '  &&%%%QQQ000QQQQQQQQ   ',
@@ -942,7 +942,7 @@ two_byte_alph = {
  '   QQQQQQQQQQQQQWWWW    ',
  '    NNWWWWWWWWWWWNN     ',
  '                        '],
-"#=": # Square button
+"#=": # Square button, 8449
 ['     &&&&&&%&%&%%%      ',
  '   &&&&%%%%%%Q%Q%QQQ    ',
  '  &&%MMMMMMMMMMMMMQQQ   ',

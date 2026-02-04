@@ -82,7 +82,7 @@ def insertScript():
 
         new_box_text = box_data["tran"]
 
-        if len(new_box_text.replace("\n","")) > len(box_data['orig'].replace("\n","") * 2):
+        if len(new_box_text.replace("\n","*")) > int(box_data['orig_len']):
             print("Error: data in box", box_num, "too long")
             raise
 
@@ -110,11 +110,13 @@ def insertScript():
     print("Old len: ", len(input_data))
     print("New len: ", len(out_data))
     percent_translated = num_translated / int(total_boxes) * 100
-    #print("Percent translated:", str(round(percent_translated, 1)) + "%")
+    print("Percent translated:", str(round(percent_translated, 1)) + "%")
 
 if __name__ == "__main__":
-    #from insertFont import insertFont
-    #insertFont() # separate these out later
+    from insertFont import insertFont
+    insertFont() # separate these out later
+    print("Finished inserting font.")
     insertScript()
+    print("Finished inserting script.")
     # use Migu 2M font to line japanese and roman text up for better editing
     
