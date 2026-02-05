@@ -1,5 +1,5 @@
 # Chobits-Translation-Project
-A project aimed at translating the game Chobits: Chiidake no Hito for the PS2 into English. Currently, 99% of the ingame text is translated and all video cutscenes are subtitled. The audio is still in Japanese, and some UI elements are not translated.
+A project aimed at translating the game Chobits: Chiidake no Hito for the PS2 into English. Predominately AI translated with manual edits. Currently, 99% of the ingame text is translated and all video cutscenes are subtitled. The audio is still in Japanese, and some UI elements are not translated.
 
 ### How to Install:
 
