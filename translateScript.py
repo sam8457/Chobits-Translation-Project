@@ -15,7 +15,7 @@ def translateFree():
     #translator = deep_translator.LingueeTranslator(source='japanese', target='english') # bad
     #translator = deep_translator.MyMemoryTranslator(source='ja-JP', target='en-US') # decent
 
-    tran_file = open('missed_script2.json','r') # change back to trans_script.json when done
+    tran_file = open('tran_script.json','r') # change back to tran_script.json when done
     tran_data = json.loads(tran_file.read())
     tran_file.close()
 
@@ -60,7 +60,7 @@ def translateFree():
         print()
 
 
-    with open('missed_script2.json','w') as file:
+    with open('tran_script.json','w') as file:
         json.dump(tran_data, file, ensure_ascii=False, indent=2)
 
 
@@ -68,7 +68,7 @@ def translateFree():
 def translatePaid():
     # Prefer this translator. It requires a paid API key from https://platform.openai.com
 
-    tran_file = open('missed_script2.json','r') # change back to trans_script.json when done
+    tran_file = open('tran_script.json','r') # change back to tran_script.json when done
     tran_data = json.loads(tran_file.read())
     tran_file.close()
 
@@ -175,7 +175,7 @@ def translatePaid():
 
     print("Total tokens used:", total_tokens)
 
-    with open('missed_script2.json','w') as file:
+    with open('tran_script.json','w') as file:
         json.dump(tran_data, file, ensure_ascii=False, indent=2)
 
 

@@ -1475,7 +1475,7 @@
     "orig": "へぇ…。しっかし、またえらい\n可愛いパソコンだな。\nすごいの持ってんじゃん。",
     "orig_len": 74,
     "custom?": false,
-    "tran": "Heh... But, it's a really cute\npersocom. You've got something\nspeical.",
+    "tran": "Heh... But, it's a really cute\npersocom. You've got something\nspecial.",
     "tran_len": 81,
     "shorten?": true,
     "name": "Shinbo"
@@ -127401,5 +127401,15 @@
     "tran": "??????????????",
     "tran_len": 6,
     "shorten?": false
+  },
+  "13010": {
+    "end_offset": 2005118,
+    "orig": "？？？",
+    "orig_len": 6,
+    "custom?": false,
+    "tran": "???",
+    "tran_len": 3,
+    "shorten?": false,
+    "name": "Custom"
   }
 }
