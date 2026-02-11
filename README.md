@@ -19,7 +19,7 @@ When future versions come out, download the most recent patch and use it on the 
 * Spelling mistakes and occasional missed textboxes are present. Missed textboxes just look like gibberish English. If you find one, feel free to submit a screenshot under the Issues tab.
 * The section where Chi goes out to buy underwear will frequently reset the player's progress. This seems to occur in the original game also. Just keep hitting Square and after a few ingame days it will eventually progress.
 * Chi does not change clothes permanently when you select it from the menu. This is present in the original game.
-* If DeltaPatcher gives the error 'The patch could not be applied: The file you are trying to patch is not the right one.', it means the original game file isn't correct. Try verifying the file signature. 89ad4ccf90ac7481bbf8502f417a0eef57733204 is the correct hash from [Redump.org](http://redump.org/disc/29067/). On Windows this can be done with the following PowerShell command (replace filename.iso with your game file's name): 
+* If DeltaPatcher gives the error 'The patch could not be applied: The file you are trying to patch is not the right one.', it means the original game file may be corrupted. Try verifying the file signature. 89ad4ccf90ac7481bbf8502f417a0eef57733204 is the correct hash from [Redump.org](http://redump.org/disc/29067/). On Windows this can be done with the following PowerShell command (replace filename.iso with your game file's name): 
 ```
 Get-Filehash '.\filename.iso' -Algorithm SHA1 | Format-List
 ```
