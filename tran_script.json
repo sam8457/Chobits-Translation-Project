@@ -1035,7 +1035,7 @@
     "orig": "よしっ！パソコンで色々するために\nガンバルぞ！！",
     "orig_len": 47,
     "custom?": false,
-    "tran": "Alright! I'm gonno do tons of \nstuff with her!!",
+    "tran": "Alright! I'm gonna do tons of \nstuff with her!!",
     "tran_len": 70,
     "shorten?": true,
     "name": "Hideki"
@@ -8807,7 +8807,7 @@
     "orig": "さすがにここじゃないだろ。",
     "orig_len": 26,
     "custom?": false,
-    "tran": "There's probly none here.",
+    "tran": "Probably nothing here.",
     "tran_len": 30,
     "shorten?": true,
     "name": "Hideki"
@@ -8847,7 +8847,7 @@
     "orig": "さすがにここじゃないだろ。",
     "orig_len": 26,
     "custom?": false,
-    "tran": "There's probly none here.",
+    "tran": "Probably nothing here.",
     "tran_len": 30,
     "shorten?": true,
     "name": "Hideki"
@@ -10857,7 +10857,7 @@
     "orig": "ちぃー、ちぃー。",
     "orig_len": 16,
     "custom?": false,
-    "tran": "Chii, chii.",
+    "tran": "Chii, Chii.",
     "tran_len": 11,
     "shorten?": false,
     "name": "Chi"
@@ -11509,7 +11509,7 @@
     "orig": "っと、思ったんだけど、\nよく考えたら、\nお金が足りないんだ〜。",
     "orig_len": 60,
     "custom?": false,
-    "tran": "I was considering it, \nbut I dont have enough. \n",
+    "tran": "I was considering it, \nbut I don't have enough.\n",
     "tran_len": 75,
     "shorten?": true,
     "name": "Hideki"
@@ -16348,7 +16348,7 @@
     "orig": "バイト…あはは、奇遇だなぁ。\nあるある、短時間で高収入のいい\nバイトが。",
     "orig_len": 70,
     "custom?": false,
-    "tran": "A job... ha, goood timing.\nI've got a job that makes a \nlot quick.",
+    "tran": "A job... ha, good timing. \nI've got a job that makes a \nlot quick.",
     "tran_len": 103,
     "shorten?": true,
     "name": "Peep Show Guy"
@@ -17372,7 +17372,7 @@
     "orig": "本須和くーん。君にお客さーん！",
     "orig_len": 30,
     "custom?": false,
-    "tran": "Monsuwa! You have a visitor!",
+    "tran": "Motosuwa! You have a visitor!",
     "tran_len": 32,
     "shorten?": true,
     "name": "Hidden/Unknown"
@@ -17562,7 +17562,7 @@
     "orig": "あい〜。\nでは、ナビモード開始しまーす。",
     "orig_len": 39,
     "custom?": false,
-    "tran": "Aight.\nStarting navigation mode now.",
+    "tran": "Aye.\nStarting navigation mode now.",
     "tran_len": 36,
     "shorten?": false,
     "name": "Sumomo"
@@ -26213,7 +26213,7 @@
     "orig": "そのリアクションがあったんだ。\nで、知らせておこうと思って。",
     "orig_len": 59,
     "custom?": false,
-    "tran": "I recieved a reply. \nSo I thought I'd let you know.",
+    "tran": "I received a reply. \nSo I thought I'd let you know.",
     "tran_len": 55,
     "shorten?": false
   },
@@ -26895,7 +26895,7 @@
     "orig": "そうよ、本須和君、頑張って！",
     "orig_len": 28,
     "custom?": false,
-    "tran": "Motozuka, do your best!",
+    "tran": "Motosuwa, do your best!",
     "tran_len": 32,
     "shorten?": true,
     "name": "Ms. Shimizu"
@@ -27514,7 +27514,7 @@
     "orig": "本須和君、一緒に泳いでくれないの？\nざーんねん。でも本須和君\n夜は逃がさないからね。",
     "orig_len": 82,
     "custom?": false,
-    "tran": "Monsuwa, won't you swim with me?\nToo bad. But I won't let you get\naway tonight.",
+    "tran": "Motosuwa, won't you swim with me? \nToo bad. But I won't let you get\naway tonight.",
     "tran_len": 79,
     "shorten?": false,
     "name": "Ms. Shimizu"
@@ -28839,7 +28839,7 @@
     "orig": "本須和！",
     "orig_len": 8,
     "custom?": false,
-    "tran": "Motsuwa!",
+    "tran": "Moto!",
     "tran_len": 8,
     "shorten?": false,
     "name": "Shinbo"
@@ -33372,7 +33372,7 @@
     "orig": "話の続きだ！新保！\nなんでオレにだまって。",
     "orig_len": 41,
     "custom?": false,
-    "tran": "Contine! Shinbo!\nWhy didn't you tell me?",
+    "tran": "Go on! Shinbo!\nWhy didn't you tell me?",
     "tran_len": 53,
     "shorten?": true,
     "name": "Hideki"
@@ -36103,7 +36103,7 @@
     "orig": "体操のしすぎ？",
     "orig_len": 14,
     "custom?": false,
-    "tran": "Over exersize?",
+    "tran": "Over exercise?",
     "tran_len": 20,
     "shorten?": true,
     "name": "Chi"
@@ -37449,7 +37449,7 @@
     "orig": "前のメンテナンスから、\n新しいお姉様のデータを\n更新していません。",
     "orig_len": 64,
     "custom?": false,
-    "tran": "Since last maintenance, \nI haven't recieved more of her\ndata.",
+    "tran": "Since last maintenance, \nI haven't received more of her\ndata.",
     "tran_len": 66,
     "shorten?": true,
     "name": "Hidden/Unknown"
@@ -39498,7 +39498,7 @@
     "orig": "マニュアルとにらめっこして、\nなんとか起動させて…\nそしたら彼女…",
     "orig_len": 64,
     "custom?": false,
-    "tran": "I pored over the manual and \nmanged to start it. \nAnd she said,",
+    "tran": "I pored over the manual and \nmanaged to start it.\nAnd she said,",
     "tran_len": 73,
     "shorten?": true,
     "name": "Ueda"
@@ -39995,7 +39995,7 @@
     "orig": "でも僕には、\n彼女が僕を助けてくれたように\n思えるんです。",
     "orig_len": 56,
     "custom?": false,
-    "tran": "But to me, it feelt like she\nwanted to save me.\n",
+    "tran": "But to me, it felt like she \nwanted to save me.\n",
     "tran_len": 39,
     "shorten?": false,
     "name": "Ueda"
@@ -41622,7 +41622,7 @@
     "orig": "さすがにここじゃないだろ。",
     "orig_len": 26,
     "custom?": false,
-    "tran": "There's probly none here.",
+    "tran": "Probably nothing here.",
     "tran_len": null,
     "shorten?": null,
     "name": "Hideki"
@@ -42031,7 +42031,7 @@
     "orig": "相手が生き物じゃなくても、\n相手が憶えてなくても、\nオレが憶えてるなら、",
     "orig_len": 70,
     "custom?": false,
-    "tran": "Even if she's not alive, even \nif she doen't remember, I will. \n",
+    "tran": "Even if she's not alive, even \nif she doesn't remember, I will.\n",
     "tran_len": 97,
     "shorten?": true
   },
@@ -43938,7 +43938,7 @@
     "orig": "やっぱりこの絵本、\nオレとちぃの事みたいだ…\nいったい、誰が何のために…",
     "orig_len": 70,
     "custom?": false,
-    "tran": "This pciture book really is like\nChi and I... Who did this,\nand why?",
+    "tran": "This picture book really is like\nChi and I... Who did this,\nand why?",
     "tran_len": 83,
     "shorten?": true,
     "name": "Hideki"
@@ -44148,7 +44148,7 @@
     "orig": "大丈夫、積み残しなし！",
     "orig_len": 22,
     "custom?": false,
-    "tran": "Nothing... thats it!",
+    "tran": "Nothing... that's it!",
     "tran_len": 31,
     "shorten?": true,
     "name": "Hideki"
@@ -44238,7 +44238,7 @@
     "orig": "あ、もしもし。本須和です。\nで、どう？そっちの調子は。",
     "orig_len": 53,
     "custom?": false,
-    "tran": "Ah, hello? This is Motusawa.\nHow's it going?",
+    "tran": "Ah, hello? This is Motosuwa.\nHow's it going?",
     "tran_len": 60,
     "shorten?": true,
     "name": "Hideki"
@@ -44783,7 +44783,7 @@
     "orig": "まとめた情報から推測すると、\nどうも【Ｃｈｏｂｉｔｓ】の\n開発には、何か裏があるらしい。",
     "orig_len": 86,
     "custom?": false,
-    "tran": "Based on my data, there may be\na clasiffied agency behind the\ndevelopment of Chobits.",
+    "tran": "Based on my data, there may be\na classified agency behind the\ndevelopment of Chobits.",
     "tran_len": 105,
     "shorten?": true
   },
@@ -45616,7 +45616,7 @@
     "orig": "今晩オレ、泊まっていくよ。\n稔君の事も心配だし。",
     "orig_len": 47,
     "custom?": false,
-    "tran": "I'm stayin over.\nI'm worried about Minoru too.",
+    "tran": "I'm staying.\nI'm worried about Minoru too.",
     "tran_len": 53,
     "shorten?": true,
     "name": "Hideki"
@@ -46642,7 +46642,7 @@
     "orig": "でも、柚姫が居てくれた時間も、\n僕には大事な思い出なんだよ。",
     "orig_len": 59,
     "custom?": false,
-    "tran": "But the memories I ve with you are\nprecious to me too.",
+    "tran": "But the memories I have with you\nare precious to me too.",
     "tran_len": 58,
     "shorten?": false,
     "name": "Minoru"
@@ -47687,7 +47687,7 @@
     "orig": "気のせいですよ…本須和君。\nちぃちゃんが来てくれるおかげで\n僕の仕事も助かってますし。",
     "orig_len": 84,
     "custom?": false,
-    "tran": "It's nothing, Motusawa. \nThanks to Chi, my work's been a \nlot easier.",
+    "tran": "It's nothing, Motosuwa. \nThanks to Chi, my work's been a \nlot easier.",
     "tran_len": 91,
     "shorten?": true,
     "name": "Ueda"
@@ -51854,7 +51854,7 @@
     "orig": "このお嬢さんがアタシだけのヒトを\n決めたとき、世界中の全ての\nパソコンとリンクし、",
     "orig_len": 80,
     "custom?": false,
-    "tran": "After chosing the one just for\nher, she links to every PC in \nthe world, and...",
+    "tran": "After choosing the one for\nher, she links to every PC in \nthe world, and...",
     "tran_len": 105,
     "shorten?": true,
     "name": "Zima"
@@ -51963,7 +51963,7 @@
     "orig": "大事な人が、\n目の前で消されるんだ。\nお前だって！",
     "orig_len": 48,
     "custom?": false,
-    "tran": "She's imporant to me! \nYou'd feel the same!\n",
+    "tran": "She's important to me!\nYou'd feel the same!\n",
     "tran_len": 76,
     "shorten?": true,
     "name": "Hideki"
@@ -56961,7 +56961,7 @@
     "orig": "、\nビデオ借りているの知っている。",
     "orig_len": 33,
     "custom?": false,
-    "tran": ", \nou rented a video.",
+    "tran": ", \nrented a video.",
     "tran_len": 26,
     "shorten?": false,
     "name": "Chi"
@@ -58117,7 +58117,7 @@
     "orig": "あ、オレ本須和。\nちぃから聞いたんだけど",
     "orig_len": 39,
     "custom?": false,
-    "tran": "Ah, its Motusawa. \nI heard from Chi.",
+    "tran": "Ah, its Motosuwa. \nI heard from Chi.",
     "tran_len": 35,
     "shorten?": false,
     "name": "Hideki"
@@ -58477,7 +58477,7 @@
     "orig": "そうじゃなくて直接ＣＰＵに\nお話する言葉。\n知ってる？",
     "orig_len": 52,
     "custom?": false,
-    "tran": "No, the language driectly on\nthe CPU.\nYou know it?",
+    "tran": "No, the language directly on\nthe CPU.\nYou know it?",
     "tran_len": 71,
     "shorten?": true,
     "name": "Chi"
@@ -58487,7 +58487,7 @@
     "orig": "そうじゃなくて直接ＣＰＵに\nお話する言葉。\n知ってる？",
     "orig_len": 52,
     "custom?": false,
-    "tran": "No, the language driectly on\nthe CPU.\nYou know it?",
+    "tran": "No, the language directly on\nthe CPU.\nYou know it?",
     "tran_len": 68,
     "shorten?": true,
     "name": "Chi"
@@ -58727,7 +58727,7 @@
     "orig": "高級言語とか低級言語とか\n使うんだって。",
     "orig_len": 39,
     "custom?": false,
-    "tran": "There're high and low level \nlanugages.",
+    "tran": "There're high and low level \nlanguages.",
     "tran_len": 62,
     "shorten?": true,
     "name": "Chi"
@@ -59024,7 +59024,7 @@
     "orig": "本須和さん呼んだ？\nちぃさん迎えにきたよ。",
     "orig_len": 41,
     "custom?": false,
-    "tran": "Yes, Motsuwa? \nChi came to pick you up.",
+    "tran": "Yes, Motosuwa?\nChi came to pick you up.",
     "tran_len": 50,
     "shorten?": true,
     "name": "Minoru"
@@ -59555,7 +59555,7 @@
     "orig": "あいまい…\nあいまいみー、ゆーゆあゆー…",
     "orig_len": 39,
     "custom?": false,
-    "tran": "Vague... vauge, \ny..you are you...",
+    "tran": "Vague... vague, \ny..you are you...",
     "tran_len": 37,
     "shorten?": false,
     "name": "Hideki"
@@ -60554,7 +60554,7 @@
     "orig": "うん、大丈夫。\n心配しなくていいよ、ちぃ…",
     "orig_len": 41,
     "custom?": false,
-    "tran": "Yeah, it's OK.\nDon'y worry, Chi...",
+    "tran": "Yeah, it's OK.\nDon't worry, Chi...",
     "tran_len": 48,
     "shorten?": true,
     "name": "Hideki"
@@ -64067,7 +64067,7 @@
     "orig": "もう少し的確に【自己分析】をして\n力を入れるところと抜く所を\n考えた方がいい。",
     "orig_len": 76,
     "custom?": false,
-    "tran": "You should rewview your behavior\nand decide where to put in\neffort.",
+    "tran": "You should review your behavior \nand decide where to put in\neffort.",
     "tran_len": 100,
     "shorten?": true,
     "name": "Chi"
@@ -68602,7 +68602,7 @@
     "orig": "ハワイの魚は、楽しい\n名前がいっぱい。",
     "orig_len": 37,
     "custom?": false,
-    "tran": "Hawaiian fish have lots of\niun names.",
+    "tran": "Hawaiian fish have lots of\nfun names.",
     "tran_len": 37,
     "shorten?": false
   },
@@ -68741,7 +68741,7 @@
     "orig": "花言葉ってたくさんある。",
     "orig_len": 24,
     "custom?": false,
-    "tran": "Flowers have a lanugage.",
+    "tran": "Flowers have a language.",
     "tran_len": 51,
     "shorten?": true,
     "name": "Chi"
@@ -73358,7 +73358,7 @@
     "orig": "、\n必要な参考書にオカズ本も買える！",
     "orig_len": 35,
     "custom?": false,
-    "tran": ", \ncan buy texbooks and Yummies!",
+    "tran": ", \ncan buy textbooks and Yummies!",
     "tran_len": 74,
     "shorten?": true
   },
@@ -75155,7 +75155,7 @@
     "orig": "じゃ、アタシ行かなくちゃ。\n程々にね、本須和君。",
     "orig_len": 47,
     "custom?": false,
-    "tran": "Well, I've gotta go.\nCill out, Motosuwa.",
+    "tran": "Well, I've gotta go.\nChill out, Motosuwa.",
     "tran_len": 48,
     "shorten?": true,
     "name": "Ms. Shimizu"
@@ -75325,7 +75325,7 @@
     "orig": "ダメよ、ちぃちゃん\n本須和君、プレッシャーに\nよわいんだから。",
     "orig_len": 60,
     "custom?": false,
-    "tran": "No, Chi, Motousawa doesn't\nhandle pressure well. \n",
+    "tran": "No, Chi, Motosuwa doesn't \nhandle pressure well. \n",
     "tran_len": 57,
     "shorten?": false,
     "name": "Ms. Shimizu"
@@ -76453,7 +76453,7 @@
     "orig": "あら、ちぃちゃんに本須和君。\n偶然ね。",
     "orig_len": 37,
     "custom?": false,
-    "tran": "Oh, Chi and Motousuwa.\nFancy that.",
+    "tran": "Oh, Chi and Motosuwa. \nFancy that.",
     "tran_len": 51,
     "shorten?": true,
     "name": "Ms. Shimizu"
@@ -77594,7 +77594,7 @@
     "orig": "ちょっぴりセクシーだけど\nさわやかで、かわいい感じの\n服です。\n",
     "orig_len": 61,
     "custom?": false,
-    "tran": "An outfit thats fresh, cute,\nand a bit sexy. \n              \n",
+    "tran": "An outfit that's fresh, cute, \nand a bit sexy. \n            \n",
     "tran_len": 41,
     "shorten?": false
   },
@@ -78825,7 +78825,7 @@
     "orig": "ちょっぴりセクシーだけど\nさわやかで、かわいい感じの服です。\n",
     "orig_len": 60,
     "custom?": false,
-    "tran": "An outfit thats fresh, cute,\nand a bit sexy.               \n",
+    "tran": "An outfit that's fresh, cute, \nand a bit sexy.             \n",
     "tran_len": 40,
     "shorten?": false
   },
@@ -80809,7 +80809,7 @@
     "orig": "ご利用ありがとう\nございます。",
     "orig_len": 29,
     "custom?": false,
-    "tran": "Thank you for chosing us. \n",
+    "tran": "Thank you for choosing us.\n",
     "tran_len": 32,
     "shorten?": true,
     "name": "Store Clerk"
@@ -85511,7 +85511,7 @@
     "orig": "今からそんな事でどうする？\nんな、焦るなって。",
     "orig_len": 45,
     "custom?": false,
-    "tran": "Panicing won't make things any\nbetter.",
+    "tran": "Panicking won't make things any \nbetter.",
     "tran_len": 71,
     "shorten?": true
   },
@@ -88173,7 +88173,7 @@
     "orig": "ちぃさん、ちぃさん\n本須和さんいつから\nあんな感じになったの？",
     "orig_len": 60,
     "custom?": false,
-    "tran": "Chi, Chi... since when did Mr.\nMotousuwa become like that? \n",
+    "tran": "Chi, Chi... since when did Mr.\nMotosuwa become like that?\n",
     "tran_len": 58,
     "shorten?": false,
     "name": "Minoru"
@@ -89634,7 +89634,7 @@
     "orig": "いやぁ、柚姫さんにそう言われると\n照れちゃいますよ。\nいやぁ、まいったな。",
     "orig_len": 72,
     "custom?": false,
-    "tran": "Ah, Yuzuki, that's kind of\nembarassing.\nYou've got me there.",
+    "tran": "Ah, Yuzuki, that's kind of\nembarrassing. \nYou've got me there.",
     "tran_len": 74,
     "shorten?": true,
     "name": "Hideki"
@@ -89663,7 +89663,7 @@
     "orig": "おだてにも弱いから、\n舞い上がってる。",
     "orig_len": 37,
     "custom?": false,
-    "tran": "Easily flattered, so he's estatic.\n",
+    "tran": "Easily flattered, so he's happy.\n",
     "tran_len": 51,
     "shorten?": true
   },
@@ -91442,7 +91442,7 @@
     "orig": "逆に高級言語は、始めから\nいろんなパーツが用意されているから、\n組み立てやすいってところさ。",
     "orig_len": 90,
     "custom?": false,
-    "tran": "Conversely, high level ones have\nmany built in featuers, so they're\neasier to work with.",
+    "tran": "Conversely, high level ones have\nmany built in features, so they're\neasier to work with.",
     "tran_len": 113,
     "shorten?": true
   },
@@ -92819,7 +92819,7 @@
     "orig": "こんにちは、本須和さん。\nちぃちゃん。\nお出かけですか？",
     "orig_len": 54,
     "custom?": false,
-    "tran": "Hello, Mr. Motousawa. \nChi.\nAre you going out?",
+    "tran": "Hello, Mr. Motosuwa.\nChi.\nAre you going out?",
     "tran_len": 45,
     "shorten?": false,
     "name": "Ms. Hibiya"
@@ -94041,7 +94041,7 @@
     "orig": "こんにちは、本須和さん。ちぃちゃん。",
     "orig_len": 36,
     "custom?": false,
-    "tran": "Hello, Mr. Motusawa. Chi.",
+    "tran": "Hello, Mr. Motosuwa. Chi.",
     "tran_len": 25,
     "shorten?": false,
     "name": "Ms. Hibiya"
@@ -94257,7 +94257,7 @@
     "orig": "こんにちは、本須和さん。\nちぃちゃん。",
     "orig_len": 37,
     "custom?": false,
-    "tran": "Hello, Mr. Motusawa.\nChi.",
+    "tran": "Hello, Mr. Motosuwa.\nChi.",
     "tran_len": 29,
     "shorten?": false,
     "name": "Ms. Hibiya"
@@ -102872,7 +102872,7 @@
     "orig": "本須和さん、よろしいですか？",
     "orig_len": 28,
     "custom?": false,
-    "tran": "Mr. Motsuwa, is this okay?",
+    "tran": "Mr. Motosuwa, is this okay?",
     "tran_len": 26,
     "shorten?": false,
     "name": "Ms. Hibiya"
@@ -103138,7 +103138,7 @@
     "orig": "うん、ちぃの作る日比谷さん直伝の\nみそ汁。\nおいしそうだ。",
     "orig_len": 56,
     "custom?": false,
-    "tran": "Ms. Hibiya's miso soup recipie. \nLooks delicious.\n",
+    "tran": "Ms. Hibiya's miso soup recipe.\nLooks delicious.\n",
     "tran_len": 78,
     "shorten?": true,
     "name": "Hideki"
@@ -104208,7 +104208,7 @@
     "orig": "ちぃ【フレンチトースト】できた。",
     "orig_len": 32,
     "custom?": false,
-    "tran": "Chi made french toast.",
+    "tran": "Chi made French toast.",
     "tran_len": 30,
     "shorten?": false
   },
@@ -104247,7 +104247,7 @@
     "orig": "ちぃ！言うことないよ！",
     "orig_len": 22,
     "custom?": false,
-    "tran": "Chi! Speachless!",
+    "tran": "Chi! I'm speechless!",
     "tran_len": 29,
     "shorten?": true,
     "name": "Hideki"
@@ -104948,7 +104948,7 @@
     "orig": "今度は、作り方を調べてから\nやれば、もっとおいしくなるよ。",
     "orig_len": 57,
     "custom?": false,
-    "tran": "If you look up a recipie, it'll \nturn out even better.",
+    "tran": "If you look up a recipe, it'll\nturn out even better.",
     "tran_len": 76,
     "shorten?": true
   },
@@ -105690,7 +105690,7 @@
     "orig": "ありがとう。本須和さん。\nそう言って頂けるとうれしいわ。",
     "orig_len": 55,
     "custom?": false,
-    "tran": "Thank you, Mr. Motusawa.\nI'm happy to hear that.",
+    "tran": "Thank you, Mr. Motosuwa.\nI'm happy to hear that.",
     "tran_len": 56,
     "shorten?": true,
     "name": "Ms. Hibiya"
@@ -108740,7 +108740,7 @@
     "orig": "ちぃ、わかった。\nこんどは、うまくつくる。",
     "orig_len": 41,
     "custom?": false,
-    "tran": "Chi undestand.\nWill do better next time.",
+    "tran": "Chi understand. \nDo better next time.",
     "tran_len": 44,
     "shorten?": true,
     "name": "Chi"
@@ -109048,7 +109048,7 @@
     "orig": "うーん、秋の香りだねぇ。\n香ばしいよ。",
     "orig_len": 37,
     "custom?": false,
-    "tran": "Ssmells like fall.\nToasty, fragrant.",
+    "tran": "Smells like fall. \nToasty, fragrant.",
     "tran_len": 51,
     "shorten?": true,
     "name": "Hideki"
@@ -110325,7 +110325,7 @@
     "orig": "なんじゃこりゃー！\nなんでタコヤキの中にチョコや\nバナナがはいってんだー！",
     "orig_len": 72,
     "custom?": false,
-    "tran": "The heck is this?!\nWhy are ther chocolate and bananas\ninside?!",
+    "tran": "The heck is this?!\nWhy are there chocolate and \nbananas inside?!",
     "tran_len": 75,
     "shorten?": true,
     "name": "Hideki"
@@ -112631,7 +112631,7 @@
     "orig": "あっ、つい田舎の事、\n思い出しちまって。",
     "orig_len": 39,
     "custom?": false,
-    "tran": "I'm just reminicing about the \ncountry.",
+    "tran": "I'm just reminiscing about the\ncountry.",
     "tran_len": 48,
     "shorten?": true,
     "name": "Hideki"
@@ -113746,7 +113746,7 @@
     "orig": "本場、関西の家庭には、\n一家に一台、たこ焼き器が\n常備されている。",
     "orig_len": 64,
     "custom?": false,
-    "tran": "In Kansai, nearl every household\nhas a takoyaki maker. \n",
+    "tran": "In Kansai, nearly every household \nhas a takoyaki maker. \n",
     "tran_len": 80,
     "shorten?": true,
     "name": "Chi"
@@ -114175,7 +114175,7 @@
     "orig": "ポイントは、「スジコン」つまり",
     "orig_len": 30,
     "custom?": false,
-    "tran": "Sujicon is a logic puzzle.",
+    "tran": "Sujikon is a logic puzzle.",
     "tran_len": 55,
     "shorten?": true,
     "name": "Chi"
@@ -114809,7 +114809,7 @@
     "orig": "外か内かの違いだけで、\nどっちもどう見られるかを\n気にしている？",
     "orig_len": 62,
     "custom?": false,
-    "tran": "In public or private, they're just\nworreid about being seen? \n",
+    "tran": "In public or private, they're just\nworried about being seen? \n",
     "tran_len": 104,
     "shorten?": true,
     "name": "Chi"
@@ -115092,7 +115092,7 @@
     "orig": "ああ、意識レベルでの話だろう。\nヒトは確実に死に向かって\nいるのだから。",
     "orig_len": 70,
     "custom?": false,
-    "tran": "You mean conciousness?\nHumans are definitely heading \ntoward death.",
+    "tran": "You mean consciousness? \nHumans are definitely heading \ntoward death.",
     "tran_len": 87,
     "shorten?": true,
     "name": "Hideki"
@@ -116067,7 +116067,7 @@
     "orig": "よし、またがんばって\n練習してみるか。",
     "orig_len": 37,
     "custom?": false,
-    "tran": "OK, we'll practic hard again. \n",
+    "tran": "OK, we'll practice hard again.\n",
     "tran_len": 40,
     "shorten?": true,
     "name": "Hideki"
@@ -117941,7 +117941,7 @@
     "orig": "たまにはクラッシックを\n聴くのもいいな。\n心が洗われるよ。",
     "orig_len": 56,
     "custom?": false,
-    "tran": "Classical music is nice sometiems.\nIt clears the mind. \n",
+    "tran": "Classical music is nice sometimes.\nIt clears the mind. \n",
     "tran_len": 71,
     "shorten?": true,
     "name": "Hideki"
@@ -118752,7 +118752,7 @@
     "orig": "何故か、稔君、雨季の時が\n好きなんだって。",
     "orig_len": 41,
     "custom?": false,
-    "tran": "Thoguh, he likes the rainy season.\n",
+    "tran": "Though, he likes the rainy season.\n",
     "tran_len": 47,
     "shorten?": true
   },
@@ -121113,7 +121113,7 @@
     "orig": "、ちょっと、\nおしゃれを気取ってみましたー。",
     "orig_len": 43,
     "custom?": false,
-    "tran": ", tring to be \nstylish.",
+    "tran": ", trying to be\nstylish.",
     "tran_len": 29,
     "shorten?": false,
     "name": "Chi"
@@ -121222,7 +121222,7 @@
     "orig": "こんにちは、本須和さん。\nちぃちゃん。",
     "orig_len": 37,
     "custom?": false,
-    "tran": "Hello, Mr. Motusawa.\nChi.",
+    "tran": "Hello, Mr. Motosuwa.\nChi.",
     "tran_len": null,
     "shorten?": null,
     "name": "Ms. Hibiya"
@@ -122214,7 +122214,7 @@
     "orig": "（そう、このきれいな人がオレの\n　住んでいるアパート\n「ガブ・城ヶ崎」の管理人）",
     "orig_len": 78,
     "custom?": false,
-    "tran": "...This beautiful woman is the\nmanager of my appartment\nbulding...",
+    "tran": "...This beautiful woman is the\nmanager of my apartment \nbuilding...",
     "tran_len": 87,
     "shorten?": true,
     "name": "Hideki"
@@ -124227,7 +124227,7 @@
     "orig": "んー、場所もよろこんでに近いし…\nよし、ちぃ。",
     "orig_len": 45,
     "custom?": false,
-    "tran": "Hmm, it's close to Yorokonde, too.\nOK, Chi.",
+    "tran": "Hmm, it's close to My Pleasure\ntoo. OK, Chi.",
     "tran_len": 47,
     "shorten?": true
   },
@@ -124425,7 +124425,7 @@
     "orig": "、\n笑顔ない…残念…。\n合格できなかった。",
     "orig_len": 40,
     "custom?": false,
-    "tran": ", \nnot smileling...\nCouldn't pass.",
+    "tran": ", \nnot smiling...\nCouldn't pass.",
     "tran_len": 44,
     "shorten?": true,
     "name": "Hidden/Unknown"
@@ -125247,7 +125247,7 @@
     "orig": "千歳の部屋",
     "orig_len": 10,
     "custom?": false,
-    "tran": "Hibia's",
+    "tran": "Hibiya's",
     "tran_len": 14,
     "shorten?": true
   },
@@ -125634,7 +125634,7 @@
     "orig": "高性能のすももが\nランダムで決めまーす！",
     "orig_len": 39,
     "custom?": false,
-    "tran": "Sumomo will chose at random!\n",
+    "tran": "Sumomo will choose at random! \n",
     "tran_len": 49,
     "shorten?": true
   },
@@ -126237,7 +126237,7 @@
     "orig": "バリボー",
     "orig_len": 8,
     "custom?": false,
-    "tran": "Voleybal",
+    "tran": "Volley B",
     "tran_len": 37,
     "shorten?": true
   },
