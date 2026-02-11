@@ -13,7 +13,7 @@ Once that's done, boot up the game and have fun!
 
 ### How to Update:
 
-When future versions come out, download the most recent patch and use it on the ***original*** Japanese version via the instructions in the previous section, then run the new version. Saves are compatible between versions and with the original.
+When future versions come out, download the most recent patch and use it on the ***original*** Japanese version via the instructions in the previous section, then run the new version. In-game saves are compatible between versions and with the original.
 
 ### Common Issues:
 * Spelling mistakes and occasional missed textboxes are present. Missed textboxes just look like gibberish English. If you find one, feel free to submit a screenshot under the Issues tab.
