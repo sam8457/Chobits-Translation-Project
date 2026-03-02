@@ -73,8 +73,8 @@ def insertScript():
         if box_data["tran"] == None:
             continue
 
-        if len(box_data["tran"]) == 0:
-            continue
+        #if len(box_data["tran"]) == 0:
+        #    continue
 
         end = box_data["end_offset"]
         length = box_data["orig_len"]

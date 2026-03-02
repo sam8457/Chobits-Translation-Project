@@ -4207,7 +4207,7 @@
     "orig": "ああ、ちぃ…\n今日もパンツ買えなかったよ…",
     "orig_len": 41,
     "custom?": false,
-    "tran": "Ah, geez... \nI couldn't buy any again...",
+    "tran": "Ah, Chi...\nI couldn't buy any again...",
     "tran_len": 47,
     "shorten?": true,
     "name": "Hideki"
@@ -4475,7 +4475,7 @@
     "orig": "いいか、ちぃ。",
     "orig_len": 14,
     "custom?": false,
-    "tran": "Listen, Chii.",
+    "tran": "Listen, Chi.",
     "tran_len": 13,
     "shorten?": false,
     "name": "Hideki"
@@ -9937,7 +9937,7 @@
     "orig": "家の手伝いはしてたけど。\n他でバイトするのって\n考えてみたらはじめてで…",
     "orig_len": 70,
     "custom?": false,
-    "tran": "I helped on the farm, but this\nis my first real job somewhere else.\n",
+    "tran": "I helped on the farm, but this\nis my first real job somewhere\nelse.",
     "tran_len": 110,
     "shorten?": true
   },
@@ -77621,7 +77621,7 @@
     "orig": "円》いらっしゃいませ。\nお買い上げですか？\n　　##　買う　　##　やめる",
     "orig_len": 68,
     "custom?": true,
-    "tran": "   Welcome. \nAre you purchasing this?\n#@ Buy    #+ Cancel",
+    "tran": "#¥   Welcome. \nAre you purchasing this?\n#@ Buy    #+ Cancel",
     "tran_len": 50,
     "shorten?": false,
     "name": "Store Clerk"
@@ -77965,7 +77965,7 @@
     "orig": "円》いらっしゃいませ。\nお買い上げですか？\n　　##　買う　　##　やめる",
     "orig_len": 68,
     "custom?": true,
-    "tran": "   Welcome. \nAre you purchasing this?\n#@ Buy    #+ Cancel",
+    "tran": "#¥   Welcome. \nAre you purchasing this?\n#@ Buy    #+ Cancel",
     "tran_len": 44,
     "shorten?": false,
     "name": "Store Clerk"
@@ -78254,7 +78254,7 @@
     "orig": "円》いらっしゃいませ。\nお買い上げですか？\n　　##　買う　　##　やめる",
     "orig_len": 68,
     "custom?": true,
-    "tran": "   Welcome. \nAre you purchasing this?\n#@ Buy    #+ Cancel",
+    "tran": "#¥   Welcome. \nAre you purchasing this?\n#@ Buy    #+ Cancel",
     "tran_len": null,
     "shorten?": null,
     "name": "Store Clerk"
@@ -78617,7 +78617,7 @@
     "orig": "円》いらっしゃいませ。\nお買い上げですか？\n　　##　買う　　##　やめる",
     "orig_len": 68,
     "custom?": true,
-    "tran": "   Welcome. \nAre you purchasing this?\n#@ Buy    #+ Cancel",
+    "tran": "#¥   Welcome. \nAre you purchasing this?\n#@ Buy    #+ Cancel",
     "tran_len": null,
     "shorten?": null,
     "name": "Store Clerk"
@@ -78852,7 +78852,7 @@
     "orig": "円》いらっしゃいませ。\nお買い上げですか？\n　　##　買う　　##　やめる",
     "orig_len": 68,
     "custom?": true,
-    "tran": "   Welcome. \nAre you purchasing this?\n#@ Buy    #+ Cancel",
+    "tran": "#¥   Welcome. \nAre you purchasing this?\n#@ Buy    #+ Cancel",
     "tran_len": null,
     "shorten?": null,
     "name": "Store Clerk"
@@ -82586,7 +82586,7 @@
     "orig": "円》いらっしゃいませ。\nお買い上げですか？\n　　##　買う　　##　やめる",
     "orig_len": 68,
     "custom?": true,
-    "tran": "   Welcome. \nAre you purchasing this?\n#@ Buy    #+ Cancel",
+    "tran": "#¥   Welcome. \nAre you purchasing this?\n#@ Buy    #+ Cancel",
     "tran_len": null,
     "shorten?": null,
     "name": "Store Clerk"
@@ -83413,7 +83413,7 @@
     "orig": "円》いらっしゃいませ。\nお買い上げですか？\n　　##　買う　　##　やめる",
     "orig_len": 68,
     "custom?": true,
-    "tran": "   Welcome. \nAre you purchasing this?\n#@ Buy    #+ Cancel",
+    "tran": "#¥   Welcome. \nAre you purchasing this?\n#@ Buy    #+ Cancel",
     "tran_len": null,
     "shorten?": null,
     "name": "Store Clerk"
@@ -92616,7 +92616,7 @@
     "orig": "いえいえ。では、いってらっしゃい。",
     "orig_len": 34,
     "custom?": false,
-    "tran": "No, no. Well then, take care.",
+    "tran": "It's nothing. Well, take care.",
     "tran_len": 29,
     "shorten?": false,
     "name": "Ms. Hibiya"
@@ -123840,7 +123840,7 @@
     "orig": "そうそう、パソコンさんですけど、\nよかったら私のお古の洋服\n差し上げましょうか？",
     "orig_len": 78,
     "custom?": false,
-    "tran": "Oh right, for the persocom, here's\nsome of my old clothes if you'd \nlike?",
+    "tran": "Oh right, for the PC, I have some \nold clothes she can use if you'd\nlike?",
     "tran_len": 82,
     "shorten?": true,
     "name": "Ms. Hibiya"
@@ -125458,21 +125458,21 @@
     "tran_len": 8,
     "shorten?": true
   },
-  "12794": {
-    "end_offset": 1993725,
-    "orig": "ワンダホー！\n５マッチングボーナス　５００円！",
+    "12794": {
+    "end_offset": 1993679,
+    "orig": "グレートです！\n４マッチングボーナス　１００円！",
     "orig_len": 45,
     "custom?": false,
-    "tran": "Wonderful!\n#5 match bonus, #5#0#0#¥!",
+    "tran": "Great!\n#4 match bonus, #1#0#0#¥!",
     "tran_len": 37,
     "shorten?": false
   },
   "12795": {
     "end_offset": 1993725,
-    "orig": "グレートです！\n４マッチングボーナス　１００円！",
+    "orig": "ワンダホー！\n５マッチングボーナス　５００円！",
     "orig_len": 45,
     "custom?": false,
-    "tran": "Great!\n#4 match bonus, #1#0#0#¥!",
+    "tran": "Wonderful!\n#5 match bonus, #5#0#0#¥!",
     "tran_len": 37,
     "shorten?": false
   },
